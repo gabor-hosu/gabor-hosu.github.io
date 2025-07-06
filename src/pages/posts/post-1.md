@@ -1,4 +1,5 @@
 ---
+layout: ../../components/BlogComponent.astro
 title: 'My First Blog Post'
 pubDate: 2022-07-01
 description: 'This is the first post of my new Astro blog.'
@@ -24,6 +25,6 @@ Welcome to my _new blog_ about learning Astro! Here, I will share my learning jo
 
 ## What's next
 
-Ez egy konvergens sor:
+Ez egy konvergens sor: $\displaystyle \sum_{n \ge 1} \frac{1}{n^2} = \frac{\pi^2}{6}$
 
 I will finish the Astro tutorial, and then keep adding more posts. Watch this space for more to come.
