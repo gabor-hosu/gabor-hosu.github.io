@@ -1,15 +1,26 @@
 ---
 import { Icon } from "astro-icon/components";
+import NavElement from "./NavElement.astro";
+import "../styles/index.css";
+import ContactIcon from "./ContactIcon.astro";
+
+const { selectedPage } = Astro.props;
 ---
 
-<nav>
-  <div>Rólam</div>
-  <div>Projektek</div>
-  <div>Blog</div>
-  <Icon name="github-logo" />
-  <Icon name="gmail-logo" />
-  <div>
-    <div>Nyelv</div>
-    <Icon name="drop-down" />
-  </div>
+<nav class="flex items-stretch">
+  <NavElement
+    name="Rólam"
+    href="/about"
+    isSelected={selectedPage === "Rólam"}
+  />
+  <NavElement
+    name="Projektek"
+    href="/projects"
+    isSelected={selectedPage === "Projektek"}
+  />
+  <NavElement name="Blog" href="/blog" isSelected={selectedPage === "Blog"} />
+  <ContactIcon name="github-logo" url="https://github.com/gabor-hosu" />
+  <ContactIcon name="gmail-logo" url="mailto:gabor.hosu121@gmail.com" />
+  <div class="px-12">Nyelv</div>
+  <Icon class="px-12" name="drop-down" />
 </nav>
