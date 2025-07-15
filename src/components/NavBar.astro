@@ -4,23 +4,40 @@ import NavElement from "./NavElement.astro";
 import "../styles/index.css";
 import ContactIcon from "./ContactIcon.astro";
 
-const { selectedPage } = Astro.props;
+const { class: className, selectedPage } = Astro.props;
 ---
 
-<nav class="flex items-stretch">
-  <NavElement
-    name="Rólam"
-    href="/about"
-    isSelected={selectedPage === "Rólam"}
-  />
-  <NavElement
-    name="Projektek"
-    href="/projects"
-    isSelected={selectedPage === "Projektek"}
-  />
-  <NavElement name="Blog" href="/blog" isSelected={selectedPage === "Blog"} />
-  <ContactIcon name="github-logo" url="https://github.com/gabor-hosu" />
-  <ContactIcon name="gmail-logo" url="mailto:gabor.hosu121@gmail.com" />
-  <div class="px-12">Nyelv</div>
-  <Icon class="px-12" name="drop-down" />
+<nav class=`flex justify-between ${className}`>
+  <div class="flex w-[30%] justify-end bg-red-500">
+    <NavElement
+      name="Rólam"
+      href="/about"
+      isSelected={selectedPage === "Rólam"}
+      class="mx-5 my-2"
+    />
+    <NavElement
+      name="Projektek"
+      href="/projects"
+      isSelected={selectedPage === "Projektek"}
+      class="mx-5 my-2"
+    />
+    <NavElement
+      name="Blog"
+      href="/blog"
+      isSelected={selectedPage === "Blog"}
+      class="mx-5 my-2"
+    />
+  </div>
+  <div class="flex w-[50%] justify-end bg-red-500">
+    <div class="flex justify-stretch">
+      <ContactIcon name="github-logo" url="https://github.com/gabor-hosu" />
+      <ContactIcon name="gmail-logo" url="mailto:gabor.hosu121@gmail.com" />
+    </div>
+  </div>
+  <div class="flex w-[15%] justify-start bg-red-500">
+    <div class="m-2">Nyelv</div>
+    <div class="flex items-center">
+      <Icon name="drop-down" class="size-6" />
+    </div>
+  </div>
 </nav>

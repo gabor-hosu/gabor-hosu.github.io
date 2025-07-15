@@ -8,6 +8,8 @@
     --dark-gray: #343a40;
     --main-font: "Lora";
     --secondary-font: "Inter";
+
+    box-sizing: border-box;
 }
 
 body {
