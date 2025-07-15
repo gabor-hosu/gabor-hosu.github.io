@@ -7,34 +7,33 @@ import ContactIcon from "./ContactIcon.astro";
 const { class: className, selectedPage } = Astro.props;
 ---
 
-<nav class=`flex justify-between ${className}`>
-  <div class="flex w-[30%] justify-end bg-red-500">
+<nav class=`text-[16pt] my-4 flex ${className}`>
+  <div class="ml-[10%] flex justify-stretch">
     <NavElement
       name="Rólam"
       href="/about"
       isSelected={selectedPage === "Rólam"}
-      class="mx-5 my-2"
+      class="mx-6.5 my-2"
     />
     <NavElement
       name="Projektek"
       href="/projects"
       isSelected={selectedPage === "Projektek"}
-      class="mx-5 my-2"
+      class="mx-6.5 my-2"
     />
     <NavElement
       name="Blog"
       href="/blog"
       isSelected={selectedPage === "Blog"}
-      class="mx-5 my-2"
+      class="mx-6.5 my-2"
     />
   </div>
-  <div class="flex w-[50%] justify-end bg-red-500">
-    <div class="flex justify-stretch">
-      <ContactIcon name="github-logo" url="https://github.com/gabor-hosu" />
-      <ContactIcon name="gmail-logo" url="mailto:gabor.hosu121@gmail.com" />
-    </div>
+  <div class="w-[60%]"></div>
+  <div class="mr-[5%] flex justify-stretch">
+    <ContactIcon name="github-logo" url="https://github.com/gabor-hosu" />
+    <ContactIcon name="gmail-logo" url="mailto:gabor.hosu121@gmail.com" />
   </div>
-  <div class="flex w-[15%] justify-start bg-red-500">
+  <div class="mr-[10%] flex">
     <div class="m-2">Nyelv</div>
     <div class="flex items-center">
       <Icon name="drop-down" class="size-6" />
