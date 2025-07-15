@@ -3,6 +3,7 @@ import { Icon } from "astro-icon/components";
 import NavElement from "./NavElement.astro";
 import "../styles/index.css";
 import ContactIcon from "./ContactIcon.astro";
+import DropDownMenu from "./DropDownMenu.astro";
 
 const { class: className, selectedPage } = Astro.props;
 ---
@@ -33,10 +34,12 @@ const { class: className, selectedPage } = Astro.props;
     <ContactIcon name="github-logo" url="https://github.com/gabor-hosu" />
     <ContactIcon name="gmail-logo" url="mailto:gabor.hosu121@gmail.com" />
   </div>
-  <div class="mr-[10%] flex">
-    <div class="m-2">Nyelv</div>
-    <div class="flex items-center">
-      <Icon name="drop-down" class="size-6" />
-    </div>
-  </div>
+  <DropDownMenu
+    class="mr-[10%]"
+    id="language-selector"
+    options={[
+      { varName: "hungarian", name: "Magyar" },
+      { varName: "english", name: "English" },
+    ]}
+  />
 </nav>
