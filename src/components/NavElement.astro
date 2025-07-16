@@ -6,8 +6,8 @@ const { class: className, name, href, isSelected } = Astro.props;
 
 <a href={href}>
   <div
-    class=`${isSelected ? "font-bold": ""} text-(--dark-blue) 
-    hover:text-(--light-gray) ${className}`
+    class={`${isSelected ? "font-bold" : ""} text-(--dark-blue) 
+    hover:text-(--light-gray) ${className}`}
   >
     {name}
   </div>
