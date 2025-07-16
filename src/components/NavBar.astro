@@ -8,8 +8,12 @@ import DropDownMenu from "./DropDownMenu.astro";
 const { class: className, selectedPage } = Astro.props;
 ---
 
-<nav class=`text-[16pt] my-4 flex ${className}`>
-  <div class="ml-[10%] flex justify-stretch">
+<nav
+  class=`max-sm:text-[13pt] min-sm:text-[15pt] my-4 flex max-sm:flex-col max-sm:items-center ${className}`
+>
+  <div
+    class="flex max-sm:flex-col max-sm:items-center min-sm:ml-[10%] min-md:justify-stretch"
+  >
     <NavElement
       name="Rólam"
       href="/about"
@@ -29,13 +33,22 @@ const { class: className, selectedPage } = Astro.props;
       class="mx-6.5 my-2"
     />
   </div>
-  <div class="w-[60%]"></div>
-  <div class="mr-[5%] flex justify-stretch">
-    <ContactIcon name="github-logo" url="https://github.com/gabor-hosu" />
-    <ContactIcon name="gmail-logo" url="mailto:gabor.hosu121@gmail.com" />
+  <div class="min-md:w-[60%]"></div>
+  <div class="flex max-sm:order-first max-sm:w-full max-sm:justify-between">
+    <button
+      type="button"
+      onclick="alert('bro')"
+      class="hidden max-sm:ml-[5%] max-sm:block"
+    >
+      <Icon name="menu" class="size-8" />
+    </button>
+    <div class="flex justify-stretch max-sm:mr-[5%]">
+      <ContactIcon name="github-logo" url="https://github.com/gabor-hosu" />
+      <ContactIcon name="gmail-logo" url="mailto:gabor.hosu121@gmail.com" />
+    </div>
   </div>
   <DropDownMenu
-    class="mr-[10%]"
+    class="max-sm:mt-5 min-sm:mr-[10%] min-sm:ml-[6%]"
     id="language-selector"
     options={[
       { varName: "hungarian", name: "Magyar" },
