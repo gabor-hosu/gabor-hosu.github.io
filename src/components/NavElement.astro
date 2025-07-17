@@ -1,0 +1,14 @@
+---
+import "../styles/index.css";
+
+const { class: className, name, href, isSelected } = Astro.props;
+---
+
+<a href={href}>
+  <div
+    class={`${isSelected ? "font-bold" : ""} text-(--dark-blue) 
+    hover:text-(--light-gray) ${className}`}
+  >
+    {name}
+  </div>
+</a>

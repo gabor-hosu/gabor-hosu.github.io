@@ -1,0 +1,10 @@
+---
+import { Icon } from "astro-icon/components";
+import "../styles/index.css";
+
+const { class: className, name, url } = Astro.props;
+---
+
+<a target="_blank" href={url} class="flex items-center">
+  <Icon name={name} class=`m-2 size-7 ${className}` />
+</a>

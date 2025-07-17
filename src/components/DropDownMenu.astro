@@ -1,0 +1,19 @@
+---
+import { Icon } from "astro-icon/components";
+import "../styles/index.css";
+
+const { class: className, options, id } = Astro.props;
+
+//TODO: add multiple listeners for each option
+---
+
+<select
+  id={id}
+  class={`hover:text-(--light-gray) cursor-pointer flex ${className}`}
+>
+  {
+    options?.map((option: any) => (
+      <option value={option.varName}>{option.name}</option>
+    ))
+  }
+</select>
