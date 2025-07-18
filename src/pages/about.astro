@@ -1,9 +1,10 @@
 ---
 import BasePage from "../components/BasePage.astro";
 import ListOfLabeledLogos from "../components/ListOfLabeledLogos.astro";
+import "../styles/about.css";
 ---
 
 <BasePage title="Rólam">
-  <p>Rólam</p>
   <ListOfLabeledLogos source="../pages/about/main-technologies.md" />
+  <ListOfLabeledLogos source="../pages/about/other-technologies.md" />
 </BasePage>
