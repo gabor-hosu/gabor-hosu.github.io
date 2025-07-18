@@ -1,0 +1,17 @@
+---
+const { source } = Astro.props;
+
+// we only load a single markdown file :P
+const imageSource = import.meta.glob("../pages/about/**/*.md");
+const load = imageSource[source];
+
+if (!load) {
+  throw new Error(`Markdown file not found at ${source}`);
+}
+
+const loadedImages = (await load()) as any;
+const Images = loadedImages.default;
+---
+
+<h1>{loadedImages.frontmatter.title}</h1>
+<Images />
