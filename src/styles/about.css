@@ -1,10 +1,14 @@
 @import "./index.css";
 
+p {
+    @apply text-[14pt] text-justify
+}
+
 h2 {
     @apply text-(--dark-blue) font-bold text-[17pt]
 }
 
-img {
+.figure > img {
     @apply size-12
 }
 

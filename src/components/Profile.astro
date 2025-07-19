@@ -1,0 +1,29 @@
+---
+import MarkdownProfile, {
+  frontmatter as profile,
+} from "../pages/about/profile.md";
+import LocationIcon from "../icons/location.svg";
+import "../styles/about.css";
+---
+
+<div class="mb-4 flex items-center gap-30">
+  <div class="size-55 overflow-hidden rounded-full bg-white shadow-lg">
+    <img src={profile.image.url} class="size-full object-cover" />
+  </div>
+  <div class="flex flex-col content-center items-center">
+    <h1 class="text-center text-[35pt] text-(--dark-blue)">
+      {profile.name.last}
+      {profile.name.first}
+    </h1>
+    <div
+      class="flex gap-2 font-(family-name:--secondary-font) text-(--light-gray)"
+    >
+      <LocationIcon class="size-6" />
+      <span class="text-[12pt]">
+        {profile.location.city}, {profile.location.country}
+      </span>
+    </div>
+  </div>
+</div>
+
+<MarkdownProfile />
