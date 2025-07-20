@@ -1,0 +1,34 @@
+---
+import Studies from "../pages/about/studies.md";
+import { frontmatter } from "../pages/about/studies.md";
+import "../styles/timeline.css";
+---
+
+<Studies />
+
+<script>
+  //   const tagContainers = Array.from(document.querySelectorAll("ul")).filter(
+  //     (ul) => ul.querySelector(">li>code"),
+  //   );
+  const tagContainers = Array.from(document.querySelectorAll("ul")).filter(
+    (ul) =>
+      Array.from(ul.children).some(
+        (li) => li.tagName === "LI" && li.firstElementChild?.tagName === "CODE",
+      ),
+  );
+  tagContainers.map((container) => {
+    container.classList.add("tag-container");
+  });
+  console.log(tagContainers);
+  const unorderedLists = Array.from(document.querySelectorAll("ul"));
+  const outermostUnorderedLists = unorderedLists.filter(
+    (ul) => !ul.parentElement || !ul.parentElement.closest("ul"),
+  );
+  console.log(outermostUnorderedLists);
+
+  outermostUnorderedLists.map((ul) => {
+    ul.classList.add("timeline-list");
+  });
+
+  console.log(outermostUnorderedLists);
+</script>
