@@ -27,9 +27,14 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <NavBar selectedPage={title} />
-    <div class="mx-[30%]">
-      <slot />
+    <div class="relative">
+      <NavBar
+        selectedPage={title}
+        class="fixed top-0 right-0 left-0 z-1 h-16 bg-(--white)"
+      />
+      <div class="mx-[30%] mt-[5%]">
+        <slot />
+      </div>
     </div>
   </body>
 </html>
