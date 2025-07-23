@@ -3,10 +3,14 @@ import BasePage from "../components/BasePage.astro";
 import ListOfLabeledLogos from "../components/ListOfLabeledLogos.astro";
 import Profile from "../components/Profile.astro";
 import "../styles/about.css";
+import Timeline from "../components/Timeline.astro";
 ---
 
 <BasePage title="Rólam">
   <Profile />
-  <ListOfLabeledLogos source="../pages/about/main-technologies.md" />
-  <ListOfLabeledLogos source="../pages/about/other-technologies.md" />
+  <ListOfLabeledLogos entryName="main-technologies" />
+  <ListOfLabeledLogos entryName="other-technologies" />
+  <Timeline entryName="experience" />
+  <Timeline entryName="studies" />
+  <Timeline entryName="achievements" />
 </BasePage>

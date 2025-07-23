@@ -1,23 +1,27 @@
 ---
+import { getEntry, render } from "astro:content";
+
+type CollectionName = keyof import("astro:content").DataEntryMap;
+
 type Props = {
-  source: string;
+  collectionName?: CollectionName;
+  entryName: string;
 };
 
-const { source } = Astro.props;
+const { collectionName = "technologies", entryName } = Astro.props;
 
-// we only load a single markdown file :P
-const imageSource = import.meta.glob("../pages/about/**/*.md");
-const load = imageSource[source];
+const entry = await getEntry(collectionName, entryName);
 
-if (!load) {
-  throw new Error(`Markdown file not found at ${source}`);
+if (!entry) {
+  throw new Error(`${entryName} entry not found`);
 }
 
-const loadedImages = (await load()) as any;
-const Images = loadedImages.default;
+const { Content } = await render(entry);
+
+const data = entry.data;
 ---
 
 <div class="mt-5">
-  <h2>{loadedImages.frontmatter.title}</h2>
-  <Images />
+  <h2>{data.title}</h2>
+  <Content />
 </div>
