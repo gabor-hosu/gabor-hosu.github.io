@@ -6,6 +6,11 @@ import DropDownMenu from "./DropDownMenu.astro";
 import MenuIcon from "../icons/menu.svg";
 import CloseIcon from "../icons/close.svg";
 
+type Props = {
+  class?: string;
+  selectedPage: "Rólam" | "Projektek" | "Blog";
+};
+
 const { class: className, selectedPage } = Astro.props;
 ---
 
