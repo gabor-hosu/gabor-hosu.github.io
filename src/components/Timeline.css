@@ -1,4 +1,4 @@
-@import "./index.css";
+@import "../styles/index.css";
 
 code {
     @apply 
@@ -49,7 +49,7 @@ ul:not(.tag-container).timeline-list > li {
 }
 
 /*Dark bullet*/
-ul:not(.tag-container).timeline-list>li::before {
+ul:not(.tag-container).timeline-list > li::before {
     content: '';
     position: absolute;
     left: -1rem;
@@ -75,6 +75,7 @@ ul:not(.tag-container).timeline-list>li:last-child::after {
     display: none;
 }
 
+/*TODO: possible problem*/
 h1 {
     @apply text-(--dark-blue) font-bold text-[17pt]
 }
