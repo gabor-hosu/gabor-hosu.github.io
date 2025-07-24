@@ -9,7 +9,7 @@ h3 {
 }
 
 .figure > img {
-    @apply size-12
+    @apply size-10
 }
 
 .figure-container {
