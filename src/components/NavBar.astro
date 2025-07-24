@@ -66,13 +66,16 @@ const { class: className, selectedPage } = Astro.props;
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const button = document.querySelectorAll("button")[0];
+
     button.addEventListener("click", () => {
       const openMenuIcon = document.getElementById("open-menu-icon");
       const closeMenuIcon = document.getElementById("close-menu-icon");
       const components = document.getElementsByClassName("is-in-mobile-menu");
+
       for (const comp of components) {
         comp.classList.toggle("max-sm:hidden");
       }
+
       openMenuIcon?.classList.toggle("hidden");
       closeMenuIcon?.classList.toggle("hidden");
     });

@@ -1,22 +1,7 @@
 @import "../styles/index.css";
 
-p {
-    @apply text-[14pt]
-}
-
 h3 {
     @apply text-(--dark-blue) font-bold text-[17pt]
-}
-
-.figure > img {
-    @apply size-10
-}
-
-.figure-container {
-    @apply 
-        mt-5
-        w-full
-        flex flex-wrap justify-evenly gap-x-7 gap-y-3
 }
 
 .figure {
@@ -28,7 +13,14 @@ h3 {
 }
 
 .figure > img {
-    @apply
+    @apply 
+        size-10
         mb-2
 }
 
+.figure-container {
+    @apply 
+        mt-5
+        w-full
+        flex flex-wrap justify-evenly gap-x-7 gap-y-3
+}

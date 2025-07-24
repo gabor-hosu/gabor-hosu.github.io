@@ -21,7 +21,7 @@ if (!entry) {
 const { Content } = await render(entry);
 ---
 
-<div class="my-7">
+<div class="timeline-content my-7 opacity-0">
   <Content />
 </div>
 
@@ -43,5 +43,14 @@ const { Content } = await render(entry);
 
   outermostUnorderedLists.map((ul) => {
     ul.classList.add("timeline-list");
+  });
+
+  // for solving the FOUC issue (with the rendering)
+  const contentWrappers = Array.from(
+    document.getElementsByClassName("timeline-content"),
+  );
+  console.log(contentWrappers);
+  contentWrappers.map((wrapper) => {
+    wrapper.classList.toggle("opacity-0");
   });
 </script>

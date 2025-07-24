@@ -12,7 +12,7 @@ code {
 strong {
     @apply
         font-(family-name:--secondary-font) font-normal text-(color:--light-gray)
-        text-[12pt]
+        text-[10pt] md:text-[12pt] whitespace-nowrap md:truncate
 }
 
 .tag-container {
@@ -28,7 +28,7 @@ ul:not(.tag-container).timeline-list {
     list-style: none;
     position: relative;
     padding-top: 1rem;
-    padding-left: 4rem;
+    padding-left: 2rem;
 }
 
 ul:not(.tag-container):not(.timeline-list) {
