@@ -23,12 +23,18 @@ const { Content } = await render(entry);
 const profile = entry.data;
 ---
 
-<div class="mb-4 flex items-center gap-30">
-  <div class="size-55 overflow-hidden rounded-full bg-white shadow-lg">
+<div
+  class="mt-[30%] mb-[5%] flex flex-col items-center gap-5 lg:flex-row lg:gap-[5%]"
+>
+  <div
+    class="aspect-square size-[50%] overflow-hidden rounded-[100%] bg-white shadow-lg md:size-[30%]"
+  >
     <img src={profile.image.url} class="size-full object-cover" />
   </div>
   <div class="flex flex-col content-center items-center">
-    <h1 class="text-center !text-[35pt] !font-normal text-(--dark-blue)">
+    <h1
+      class="text-center !text-[35pt] leading-13 !font-normal text-(--dark-blue) max-lg:!text-[30pt]"
+    >
       {profile.name.last}
       {profile.name.first}
     </h1>
