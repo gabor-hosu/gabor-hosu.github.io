@@ -45,7 +45,7 @@ ul:not(.tag-container):not(.timeline-list) > li {
 ul:not(.tag-container).timeline-list > li {
     position: relative;
     padding-left: 2rem;
-    padding-bottom: 0.5rem;
+    padding-bottom: 2rem;
 }
 
 /*Dark bullet*/
@@ -75,11 +75,10 @@ ul:not(.tag-container).timeline-list>li:last-child::after {
     display: none;
 }
 
-/*TODO: possible problem*/
 h1 {
     @apply text-(--dark-blue) font-bold text-[17pt]
 }
 
 h2 {
-    @apply text-(--dark-blue) font-bold text-[15pt]
+    @apply text-(--dark-blue) font-bold text-[14pt]
 }

@@ -21,7 +21,9 @@ if (!entry) {
 const { Content } = await render(entry);
 ---
 
-<Content />
+<div class="my-7">
+  <Content />
+</div>
 
 <script>
   const tagContainers = Array.from(document.querySelectorAll("ul")).filter(
