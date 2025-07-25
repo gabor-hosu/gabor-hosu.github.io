@@ -1,5 +1,4 @@
 ---
-import { Icon } from "astro-icon/components";
 import NavElement from "./NavElement.astro";
 import "../styles/index.css";
 import ContactIcon from "./ContactIcon.astro";
@@ -7,34 +6,40 @@ import DropDownMenu from "./DropDownMenu.astro";
 import MenuIcon from "../icons/menu.svg";
 import CloseIcon from "../icons/close.svg";
 
+type Props = {
+  class?: string;
+  selectedPage: "Rólam" | "Projektek" | "Blog";
+};
+
 const { class: className, selectedPage } = Astro.props;
 ---
 
 <nav
-  class=`max-sm:text-[13pt] min-sm:text-[15pt] my-4 flex max-sm:flex-col max-sm:items-center ${className}`
+  class=`text-[13pt] sm:text-[15pt] py-4 flex flex-col sm:flex-row items-center sm:items-stretch ${className}`
 >
   <div
-    class="is-in-mobile-menu flex max-sm:hidden max-sm:flex-col max-sm:items-center min-sm:ml-[10%] min-md:justify-stretch"
+    class="is-in-mobile-menu flex items-center max-sm:mt-5 max-sm:hidden max-sm:flex-col max-sm:gap-5 min-sm:ml-[10%] min-md:justify-stretch"
   >
     <NavElement
       name="Rólam"
       href="/about"
       isSelected={selectedPage === "Rólam"}
-      class="mx-6.5 my-2"
+      class="mx-6.5"
     />
     <NavElement
       name="Projektek"
       href="/projects"
       isSelected={selectedPage === "Projektek"}
-      class="mx-6.5 my-2"
+      class="mx-6.5"
     />
     <NavElement
       name="Blog"
       href="/blog"
       isSelected={selectedPage === "Blog"}
-      class="mx-6.5 my-2"
+      class="mx-6.5"
     />
   </div>
+  <!-- TODO: space for searchbar -->
   <div class="min-md:w-[60%]"></div>
   <div class="flex max-sm:order-first max-sm:w-full max-sm:justify-between">
     <button
@@ -50,7 +55,7 @@ const { class: className, selectedPage } = Astro.props;
     </div>
   </div>
   <DropDownMenu
-    class="is-in-mobile-menu max-sm:mt-5 max-sm:hidden min-sm:mr-[10%] min-sm:ml-[6%]"
+    class="is-in-mobile-menu max-sm:mt-8 max-sm:hidden min-sm:mr-[10%] min-sm:ml-[6%]"
     id="language-selector"
     options={[
       { varName: "hungarian", name: "Magyar" },
@@ -62,13 +67,16 @@ const { class: className, selectedPage } = Astro.props;
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const button = document.querySelectorAll("button")[0];
+
     button.addEventListener("click", () => {
       const openMenuIcon = document.getElementById("open-menu-icon");
       const closeMenuIcon = document.getElementById("close-menu-icon");
       const components = document.getElementsByClassName("is-in-mobile-menu");
+
       for (const comp of components) {
         comp.classList.toggle("max-sm:hidden");
       }
+
       openMenuIcon?.classList.toggle("hidden");
       closeMenuIcon?.classList.toggle("hidden");
     });

@@ -2,6 +2,12 @@
 import { Icon } from "astro-icon/components";
 import "../styles/index.css";
 
+type Props = {
+  class?: string;
+  id: string;
+  options: { varName: string; name: string }[];
+};
+
 const { class: className, options, id } = Astro.props;
 
 //TODO: add multiple listeners for each option

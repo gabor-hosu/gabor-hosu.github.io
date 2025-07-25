@@ -1,7 +1,15 @@
 ---
 import BasePage from "../components/BasePage.astro";
+import ListOfLabeledLogos from "../components/ListOfLabeledLogos.astro";
+import Profile from "../components/Profile.astro";
+import Timeline from "../components/Timeline.astro";
 ---
 
 <BasePage title="Rólam">
-  <p>Rólam</p>
+  <Profile />
+  <ListOfLabeledLogos entryName="main-technologies" />
+  <ListOfLabeledLogos entryName="other-technologies" />
+  <Timeline entryName="experience" />
+  <Timeline entryName="studies" />
+  <Timeline entryName="achievements" />
 </BasePage>

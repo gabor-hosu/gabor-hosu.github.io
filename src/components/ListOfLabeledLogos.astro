@@ -1,0 +1,28 @@
+---
+import { getEntry, render } from "astro:content";
+import "./ListOfLabeledLogos.css";
+
+type CollectionName = keyof import("astro:content").DataEntryMap;
+
+type Props = {
+  collectionName?: CollectionName;
+  entryName: string;
+};
+
+const { collectionName = "technologies", entryName } = Astro.props;
+
+const entry = await getEntry(collectionName, entryName);
+
+if (!entry) {
+  throw new Error(`${entryName} entry not found`);
+}
+
+const { Content } = await render(entry);
+
+const data = entry.data;
+---
+
+<div class="my-7">
+  <h3>{data.title}</h3>
+  <Content />
+</div>

@@ -1,0 +1,84 @@
+@import "../styles/index.css";
+
+code {
+    @apply 
+        text-white font-bold font-(family-name:--secondary-font) text-[10pt]
+        bg-(color:--light-gray)
+        p-1
+        rounded-3xl
+        border-(--dark-gray) border-1
+}
+
+strong {
+    @apply
+        font-(family-name:--secondary-font) font-normal text-(color:--light-gray)
+        text-[10pt] md:text-[12pt] whitespace-nowrap md:truncate
+}
+
+.tag-container {
+    @apply 
+        flex flex-wrap gap-2 justify-center
+        my-4
+        ml-[20%]
+        max-w-[60%]
+}
+
+
+ul:not(.tag-container).timeline-list {
+    list-style: none;
+    position: relative;
+    padding-top: 1rem;
+    padding-left: 2rem;
+}
+
+ul:not(.tag-container):not(.timeline-list) {
+    @apply list-disc
+}
+
+ul:not(.tag-container):not(.timeline-list) > li {
+    list-style-position: inside;
+    padding-top: 0.25rem;
+    padding-left: 1.5rem;
+    padding-bottom: 0.25rem;
+}
+
+ul:not(.tag-container).timeline-list > li {
+    position: relative;
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+}
+
+/*Dark bullet*/
+ul:not(.tag-container).timeline-list > li::before {
+    content: '';
+    position: absolute;
+    left: -1rem;
+    top: 0.5rem;
+    width: 0.7rem;
+    height: 0.7rem;
+    background-color: var(--dark-blue);
+    border-radius: 50%;
+}
+
+/*Dark connector lines of the bullets*/
+ul:not(.tag-container).timeline-list>li::after {
+    content: '';
+    position: absolute;
+    left: -0.73rem;
+    top: 1rem;
+    width: 0.16rem;
+    height: 100%;
+    background-color: var(--dark-blue);
+}
+
+ul:not(.tag-container).timeline-list>li:last-child::after {
+    display: none;
+}
+
+h1 {
+    @apply text-(--dark-blue) font-bold text-[17pt]
+}
+
+h2 {
+    @apply text-(--dark-blue) font-bold text-[14pt]
+}

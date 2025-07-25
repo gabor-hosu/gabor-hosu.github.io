@@ -1,0 +1,26 @@
+@import "../styles/index.css";
+
+h3 {
+    @apply text-(--dark-blue) font-bold text-[17pt]
+}
+
+.figure {
+    @apply 
+        flex flex-col items-center 
+        max-w-30 
+        text-[10pt] font-(family-name:--secondary-font) text-(--light-gray) text-center
+        leading-4.5
+}
+
+.figure > img {
+    @apply 
+        size-10
+        mb-2
+}
+
+.figure-container {
+    @apply 
+        mt-5
+        w-full
+        flex flex-wrap justify-evenly gap-x-7 gap-y-3
+}

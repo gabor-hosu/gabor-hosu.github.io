@@ -1,6 +1,13 @@
 ---
 import "../styles/index.css";
 
+type Props = {
+  class?: string;
+  name: string;
+  href: string;
+  isSelected: boolean;
+};
+
 const { class: className, name, href, isSelected } = Astro.props;
 ---
 
