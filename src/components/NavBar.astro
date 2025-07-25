@@ -15,30 +15,31 @@ const { class: className, selectedPage } = Astro.props;
 ---
 
 <nav
-  class=`max-sm:text-[13pt] min-sm:text-[15pt] py-4 flex max-sm:flex-col max-sm:items-center ${className}`
+  class=`text-[13pt] sm:text-[15pt] py-4 flex flex-col sm:flex-row items-center sm:items-stretch ${className}`
 >
   <div
-    class="is-in-mobile-menu flex max-sm:hidden max-sm:flex-col max-sm:items-center min-sm:ml-[10%] min-md:justify-stretch"
+    class="is-in-mobile-menu flex items-center max-sm:mt-5 max-sm:hidden max-sm:flex-col max-sm:gap-5 min-sm:ml-[10%] min-md:justify-stretch"
   >
     <NavElement
       name="Rólam"
       href="/about"
       isSelected={selectedPage === "Rólam"}
-      class="mx-6.5 my-2"
+      class="mx-6.5"
     />
     <NavElement
       name="Projektek"
       href="/projects"
       isSelected={selectedPage === "Projektek"}
-      class="mx-6.5 my-2"
+      class="mx-6.5"
     />
     <NavElement
       name="Blog"
       href="/blog"
       isSelected={selectedPage === "Blog"}
-      class="mx-6.5 my-2"
+      class="mx-6.5"
     />
   </div>
+  <!-- TODO: space for searchbar -->
   <div class="min-md:w-[60%]"></div>
   <div class="flex max-sm:order-first max-sm:w-full max-sm:justify-between">
     <button
@@ -54,7 +55,7 @@ const { class: className, selectedPage } = Astro.props;
     </div>
   </div>
   <DropDownMenu
-    class="is-in-mobile-menu max-sm:mt-5 max-sm:hidden min-sm:mr-[10%] min-sm:ml-[6%]"
+    class="is-in-mobile-menu max-sm:mt-8 max-sm:hidden min-sm:mr-[10%] min-sm:ml-[6%]"
     id="language-selector"
     options={[
       { varName: "hungarian", name: "Magyar" },
