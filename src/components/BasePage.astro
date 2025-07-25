@@ -1,6 +1,10 @@
 ---
 import NavBar from "../components/NavBar.astro";
 
+type Props = {
+  title: string;
+};
+
 const { title } = Astro.props;
 ---
 
@@ -23,7 +27,16 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <NavBar selectedPage={title} />
-    <slot />
+    <div class="relative">
+      <NavBar
+        selectedPage={title}
+        class="fixed top-0 right-0 left-0 z-1 bg-(--white)"
+      />
+      <div
+        class="mx-[7%] mt-[30%] md:mx-[15%] md:mt-[15%] xl:mx-[30%] xl:mt-[10%]"
+      >
+        <slot />
+      </div>
+    </div>
   </body>
 </html>

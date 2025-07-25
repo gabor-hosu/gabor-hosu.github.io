@@ -1,7 +1,8 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
-
+// @ts-ignore
+import rehypeFigure from "rehype-figure";
 import icon from "astro-icon";
 
 // https://astro.build/config
@@ -15,4 +16,7 @@ export default defineConfig({
   },
 
   integrations: [icon()],
+  markdown: {
+    rehypePlugins: [[rehypeFigure, { className: "figure", figcaption: true }]],
+  },
 });
