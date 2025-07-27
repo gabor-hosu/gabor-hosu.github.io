@@ -44,5 +44,5 @@ export const collections = {
   profile: profileCollection,
   technologies: technologiesCollection,
   timeline: timelineCollection,
-  project: projectCollection,
+  projects: projectCollection,
 };

@@ -1,12 +1,12 @@
-@import "../styles/index.css";
+@import "../styles/index";
 
 code {
     @apply 
-        text-white font-bold font-(family-name:--secondary-font) text-[10pt]
-        bg-(color:--light-gray)
-        p-1
-        rounded-3xl
-        border-(--dark-gray) border-1
+        rounded-3xl border-1 border-(--dark-gray) 
+        bg-(color:--light-gray) 
+        px-2 py-1 
+        font-(family-name:--secondary-font) text-[10pt] font-bold 
+        text-white;
 }
 
 strong {

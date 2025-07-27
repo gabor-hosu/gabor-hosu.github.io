@@ -1,5 +1,4 @@
 ---
-import { getEntry, render } from "astro:content";
 import PreviewElement from "./PreviewElement.astro";
 import { getCollection } from "astro:content";
 
@@ -16,10 +15,16 @@ const collection = await getCollection(collectionName);
 if (!collection) {
   throw new Error(`${collectionName} collection not found`);
 }
-
-const previews = collection.map((element) => element.data);
 ---
 
 <div class="flex flex-col gap-15">
-  {previews.map((preview) => <PreviewElement {...preview} />)}
+  {
+    collection.map((previewEntry) => (
+      <PreviewElement
+        {...previewEntry.data}
+        collectionName={collectionName}
+        slug={previewEntry.slug}
+      />
+    ))
+  }
 </div>

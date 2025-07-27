@@ -8,14 +8,10 @@ h3 {
     @apply 
         flex flex-col items-center 
         max-w-30 
-        text-[10pt] font-(family-name:--secondary-font) text-(--light-gray) text-center
-        leading-4.5
 }
 
 .figure > img {
-    @apply 
-        size-10
-        mb-2
+    @apply size-10
 }
 
 .figure-container {
