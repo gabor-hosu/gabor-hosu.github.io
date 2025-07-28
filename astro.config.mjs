@@ -4,6 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 // @ts-ignore
 import rehypeFigure from "rehype-figure";
 import icon from "astro-icon";
+import rehypeAddLightboxWrapper from "./src/plugins/rehype-add-lightbox-wrapper";
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,6 +18,9 @@ export default defineConfig({
 
   integrations: [icon()],
   markdown: {
-    rehypePlugins: [[rehypeFigure, { className: "figure", figcaption: true }]],
+    rehypePlugins: [
+      [rehypeFigure, { className: "figure", figcaption: true }],
+      rehypeAddLightboxWrapper,
+    ],
   },
 });

@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html {
+    color-scheme: light;
+}
+
 :root {
     --white: #f8f9fa; 
     --dark-blue: #3a3f58; 
