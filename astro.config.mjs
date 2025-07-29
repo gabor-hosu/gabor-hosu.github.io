@@ -21,6 +21,7 @@ export default defineConfig({
     rehypePlugins: [
       [rehypeFigure, { className: "figure", figcaption: true }],
       rehypeAddLightboxWrapper,
+      // remarkGfm,
     ],
   },
 });

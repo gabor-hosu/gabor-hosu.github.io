@@ -1,8 +1,5 @@
 @import "../styles/index.css";
 
-h3 {
-    @apply text-(--dark-blue) font-bold text-[17pt]
-}
 
 .figure {
     @apply 

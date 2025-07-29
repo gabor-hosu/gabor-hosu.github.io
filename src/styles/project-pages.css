@@ -3,18 +3,17 @@
 .figure {
     @apply 
         flex flex-col justify-center
-        max-w-100 
+        max-w-150 
         my-5
 }
 
-
-/* TODO: try to figure out why figure doesn't work instead of img (hint: rewrite this whole stuff) */
 
 .zoom-container {
   display: flex;
   justify-content: center;
   cursor: zoom-in;
   background: var(--white);
+  padding: 5px;
 }
 
 .zoom-toggle {
@@ -23,33 +22,36 @@
 
 .zoom-label {
   display: block;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in;
 }
 
 .zoom-label figure {
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in;
   cursor: zoom-in;
 }
 
 .zoom-toggle:checked + .zoom-label figure {
-  transform: scale(1.5);
-  max-width: 60vw;
-  max-height: 60vh;
+  transform: scale(1.25);
+  max-width: 80vw;
+  max-height: 80vh;
   cursor: zoom-out;
   z-index: 1000;
-  background: var(--white);
+  background: rgba(var(--white-rgb), 0.7);
   position: sticky;
 }
 
 .zoom-toggle:checked + .zoom-label figcaption {
-  font-size: 8pt;
+  font-size: 10pt;
+  color: var(--dark-gray);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .zoom-toggle:checked + .zoom-label::after {
   content: "";
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.3);
   z-index: 1;
 }
 

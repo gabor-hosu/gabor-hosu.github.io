@@ -38,9 +38,7 @@ const contentUrl = `${collectionName}/${slug}`;
   <div>
     <div class="my-2">
       <a href={contentUrl}>
-        <div class="text-[17pt] font-bold text-(color:--dark-blue)">
-          {title}
-        </div>
+        <h1>{title}</h1>
       </a>
       <div
         class="mt-1 font-(family-name:--secondary-font) text-[10pt] text-(color:--light-gray) md:text-[12pt]"
@@ -49,7 +47,7 @@ const contentUrl = `${collectionName}/${slug}`;
       </div>
     </div>
 
-    <div class="text-[12pt] sm:text-[14pt]">{description}</div>
+    <p class="py-0">{description}</p>
 
     <div class="mt-3 flex justify-end gap-2">
       {tags.map((tag) => <Tag label={tag} />)}
