@@ -24,7 +24,8 @@ body {
 
 figure > figcaption {
     @apply 
-        text-[12pt] font-(family-name:--secondary-font) text-(--light-gray) text-center
+        text-[10pt] sm:text-[12pt] 
+        font-(family-name:--secondary-font) text-(--light-gray) text-center
         leading-4.5
         py-3
 }
@@ -41,6 +42,14 @@ p a:hover {
 }
 
 p a {
+    @apply text-(--skin)
+}
+
+li > a:hover {
+    @apply underline
+}
+
+li > a {
     @apply text-(--skin)
 }
 
@@ -79,5 +88,5 @@ ol ol {
 .video {
     @apply 
         my-5 mx-auto
-        w-[90%] aspect-video
+        max-w-[90%]
 }
