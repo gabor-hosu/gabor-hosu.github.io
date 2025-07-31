@@ -1,0 +1,16 @@
+---
+import "../styles/index.css";
+
+type Props = {
+  label: string;
+  class?: string;
+};
+
+const { class: className = "", label } = Astro.props;
+---
+
+<span
+  class=`rounded-3xl border-1 border-(--dark-gray) bg-(color:--light-gray) px-2 py-1 font-(family-name:--secondary-font) text-[10pt] font-bold text-white ${className}`
+>
+  {label}
+</span>

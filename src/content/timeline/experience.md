@@ -1,9 +1,9 @@
 ---
 ---
 
-# Tapasztalat
+## Tapasztalat
 
-- ## Szakmai gyakorlat, [Codespring](https://www.codespring.ro/mentoring-at-codespring)
+- ### Szakmai gyakorlat, [Codespring](https://www.codespring.ro/mentoring-at-codespring)
 
   **Kolozsvár, Románia - 2024 júl. - 2024 aug.**
   - A cég által biztosított mentorok koordinálása alatt dolgoztam a B.o.B. chatbot projekten.
@@ -20,7 +20,7 @@
     - `Javascript`
     - `React`
 
-- ## Fullstack mentorprogram, [Codespring](https://www.codespring.ro/mentoring-at-codespring)
+- ### Fullstack mentorprogram, [Codespring](https://www.codespring.ro/mentoring-at-codespring)
 
   **Kolozsvár, Románia - 2023 okt. - 2024 máj.**
   - A szakmai gyakorlatra felkészítő képzéssorozat, amely havonta 2 képzésből állt.

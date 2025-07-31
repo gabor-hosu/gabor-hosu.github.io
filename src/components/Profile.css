@@ -1,0 +1,10 @@
+@import "../styles/index.css";
+
+.profile-description p {
+    @apply 
+        text-[12pt] sm:text-[14pt]        
+}
+
+p {
+    @apply py-0
+}

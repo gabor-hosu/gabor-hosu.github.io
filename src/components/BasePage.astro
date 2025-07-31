@@ -26,17 +26,14 @@ const { title } = Astro.props;
     />
     <title>{title}</title>
   </head>
-  <body>
-    <div class="relative">
-      <NavBar
-        selectedPage={title}
-        class="fixed top-0 right-0 left-0 z-1 bg-(--white)"
-      />
-      <div
-        class="mx-[7%] mt-[30%] md:mx-[15%] md:mt-[15%] xl:mx-[30%] xl:mt-[10%]"
-      >
-        <slot />
-      </div>
+  <body class="mt-40 flex items-center justify-center">
+    {/*@ts-ignore*/}
+    <NavBar
+      selectedPage={title}
+      class="fixed top-0 right-0 left-0 z-1 bg-(--white)"
+    />
+    <div class="mb-10 w-[90vw] sm:w-135 md:w-150 lg:w-200">
+      <slot />
     </div>
   </body>
-</html>
+</html>``
