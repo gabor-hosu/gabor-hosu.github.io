@@ -1,6 +1,6 @@
 ---
 import LocationIcon from "../icons/location.svg";
-import "../styles/index.css";
+import "./Profile.css";
 import { getEntry, render } from "astro:content";
 
 type CollectionName = keyof import("astro:content").DataEntryMap;
@@ -32,12 +32,12 @@ const profile = entry.data;
     <img src={profile.image.url} class="size-full object-cover" />
   </div>
   <div class="flex flex-col content-center items-center">
-    <h1
-      class="text-center !text-[35pt] leading-13 !font-normal text-(--dark-blue) max-lg:!text-[30pt]"
+    <div
+      class="text-center text-[35pt] leading-13 font-normal text-(--dark-blue) max-lg:!text-[30pt]"
     >
       {profile.name.last}
       {profile.name.first}
-    </h1>
+    </div>
     <div
       class="flex gap-0.75 font-(family-name:--secondary-font) text-(--light-gray)"
     >
@@ -49,6 +49,6 @@ const profile = entry.data;
   </div>
 </div>
 
-<div class="text-[12pt] sm:text-[14pt]">
+<div class="profile-description">
   <Content />
 </div>

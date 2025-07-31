@@ -1,0 +1,53 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import BasePage from "../../components/BasePage.astro";
+import { format } from "date-fns";
+import Tag from "../../components/Tag.astro";
+import "../../styles/project-pages.css";
+
+// static paths generation for "project/..." pages
+export const getStaticPaths = async () => {
+  const projectEntries = await getCollection("projects");
+  const paths = projectEntries.map((projectEntry) => {
+    return {
+      params: {
+        slug: projectEntry.slug,
+      },
+      props: {
+        projectEntry,
+      },
+    };
+  });
+
+  return paths;
+};
+
+type Props = {
+  projectEntry: CollectionEntry<"projects">;
+};
+
+const { projectEntry } = Astro.props;
+const { Content } = await projectEntry.render();
+const { title, date, tags } = projectEntry.data;
+
+const formatDateNoDay = (date: Date) => format(date, "yyyy MM");
+---
+
+<BasePage title="Projektek">
+  <h1>
+    {title}
+  </h1>
+  <div class="mt-2 mb-20 flex items-center justify-between">
+    <div
+      class="font-(family-name:--secondary-font) text-[10pt] text-(color:--light-gray) md:text-[12pt]"
+    >
+      {formatDateNoDay(date.start)} - {formatDateNoDay(date.end)}
+    </div>
+    <div class="flex justify-end gap-2">
+      {tags.map((tag) => <Tag label={tag} />)}
+    </div>
+  </div>
+
+  <Content />
+</BasePage>

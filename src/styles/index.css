@@ -1,6 +1,11 @@
 @import "tailwindcss";
 
+html {
+    color-scheme: light;
+}
+
 :root {
+    --white-rgb: 248, 249, 250;
     --white: #f8f9fa; 
     --dark-blue: #3a3f58; 
     --skin: #d8a48f;
@@ -15,4 +20,73 @@
 body {
     background-color: var(--white);
     font-family: var(--main-font);
+}
+
+figure > figcaption {
+    @apply 
+        text-[10pt] sm:text-[12pt] 
+        font-(family-name:--secondary-font) text-(--light-gray) text-center
+        leading-4.5
+        py-3
+}
+
+p {
+    @apply 
+        text-[12pt] sm:text-[14pt]
+        py-2
+        text-justify
+}
+
+p a:hover {
+    @apply underline
+}
+
+p a {
+    @apply text-(--skin)
+}
+
+li > a:hover {
+    @apply underline
+}
+
+li > a {
+    @apply text-(--skin)
+}
+
+h1 {
+    @apply text-[20pt] font-bold text-(color:--dark-blue) leading-8
+}
+
+h2 {
+    @apply text-(--dark-blue) font-bold text-[17pt]
+}
+
+h3 {
+    @apply text-(--dark-blue) font-bold text-[14pt]
+}
+
+li {
+    @apply text-[12pt] sm:text-[14pt]
+}
+
+ul {
+    @apply pl-[2rem] list-disc
+}
+
+ul ul {
+    @apply pl-[1.5rem] list-[circle]
+}
+
+ol {
+    @apply pl-[2rem] list-decimal
+}
+
+ol ol {
+    @apply pl-[1.5rem] list-[lower-alpha]
+}
+
+.video {
+    @apply 
+        my-5 mx-auto
+        max-w-[90%]
 }

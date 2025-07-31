@@ -49,7 +49,6 @@ const { Content } = await render(entry);
   const contentWrappers = Array.from(
     document.getElementsByClassName("timeline-content"),
   );
-  console.log(contentWrappers);
   contentWrappers.map((wrapper) => {
     wrapper.classList.toggle("opacity-0");
   });

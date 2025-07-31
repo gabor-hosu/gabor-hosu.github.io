@@ -1,0 +1,56 @@
+---
+import { Image } from "astro:assets";
+import "../styles/index.css";
+import { format } from "date-fns";
+import Tag from "./Tag.astro";
+
+type Props = {
+  title: string;
+  description: string;
+  coverImage: {
+    url: string;
+  };
+  date: {
+    start: Date;
+    end: Date;
+  };
+  tags: string[];
+  collectionName: string;
+  slug: string;
+};
+
+const { title, description, coverImage, date, tags, collectionName, slug } =
+  Astro.props;
+
+//TODO: add localization later (with the multilanguage support)
+const formatDateNoDay = (date: Date) => format(date, "yyyy MM");
+const contentUrl = `${collectionName}/${slug}`;
+---
+
+<div class="flex flex-col gap-2">
+  {/* @ts-ignore */}
+  <Image
+    src={coverImage.url}
+    alt=" "
+    class="rounded-[1.5rem] border-1 border-(--dark-blue)"
+  />
+
+  <div>
+    <div class="my-2">
+      <a href={contentUrl}>
+        <h1>{title}</h1>
+      </a>
+      <div
+        class="mt-1 font-(family-name:--secondary-font) text-[10pt] text-(color:--light-gray) md:text-[12pt]"
+      >
+        {formatDateNoDay(date.start)} - {formatDateNoDay(date.end)}
+      </div>
+    </div>
+
+    <p class="py-0">{description}</p>
+
+    <div class="mt-3 flex justify-end gap-2">
+      {tags.map((tag) => <Tag label={tag} />)}
+    </div>
+  </div>
+</div>
