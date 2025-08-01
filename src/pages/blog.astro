@@ -5,10 +5,5 @@ import PreviewList from "../components/PreviewList.astro";
 ---
 
 <BasePage title="Blog">
-  <Search
-    id="search"
-    className="pagefind-ui"
-    uiOptions={{ showImages: false }}
-  />
   <PreviewList collectionName="blog" isShortDateFormat={false} />
 </BasePage>

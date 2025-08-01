@@ -5,6 +5,8 @@ import ContactIcon from "./ContactIcon.astro";
 import DropDownMenu from "./DropDownMenu.astro";
 import MenuIcon from "../icons/menu.svg";
 import CloseIcon from "../icons/close.svg";
+import Search from "astro-pagefind/components/Search";
+import "../styles/search-bar.css";
 
 type Props = {
   class?: string;
@@ -40,7 +42,17 @@ const { class: className, selectedPage } = Astro.props;
     />
   </div>
   <!-- TODO: space for searchbar -->
-  <div class="min-md:w-[60%]"></div>
+  <div class="min-md:w-[60%]">
+    <Search
+      id="search"
+      className="pagefind-ui"
+      uiOptions={{
+        showImages: false,
+        pageSize: 4,
+        excerptLength: 20,
+      }}
+    />
+  </div>
   <div class="flex max-sm:order-first max-sm:w-full max-sm:justify-between">
     <button
       type="button"
