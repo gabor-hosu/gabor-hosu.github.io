@@ -8,14 +8,14 @@ import "../../styles/project-pages.css";
 
 // static paths generation for "project/..." pages
 export const getStaticPaths = async () => {
-  const projectEntries = await getCollection("projects");
-  const paths = projectEntries.map((projectEntry) => {
+  const projectEntries = await getCollection("blog");
+  const paths = projectEntries.map((blogEntry) => {
     return {
       params: {
-        slug: projectEntry.slug,
+        slug: blogEntry.slug,
       },
       props: {
-        projectEntry,
+        blogEntry,
       },
     };
   });
@@ -24,26 +24,27 @@ export const getStaticPaths = async () => {
 };
 
 type Props = {
-  projectEntry: CollectionEntry<"projects">;
+  blogEntry: CollectionEntry<"blog">;
 };
 
-const { projectEntry } = Astro.props;
-const { Content } = await projectEntry.render();
-const { title, date, tags } = projectEntry.data;
+const { blogEntry } = Astro.props;
+const { Content } = await blogEntry.render();
+const { title, date, tags } = blogEntry.data;
 
-const formatDateNoDay = (date: Date) => format(date, "yyyy MM");
+const formatDate = (date: Date) => format(date, "yyyy. MM. dd.");
 ---
 
-<BasePage title="Projektek">
-  <div>
+<BasePage title="Blog">
+  <div data-pagefind-body>
     <h1>
       {title}
     </h1>
     <div class="mt-2 mb-20 flex items-center justify-between">
       <div
         class="font-(family-name:--secondary-font) text-[10pt] text-(color:--light-gray) md:text-[12pt]"
+        data-pagefind-ignore
       >
-        {formatDateNoDay(date.start)} - {formatDateNoDay(date.end)}
+        {formatDate(date.start)}
       </div>
       <div class="flex justify-end gap-2">
         {tags.map((tag) => <Tag label={tag} />)}

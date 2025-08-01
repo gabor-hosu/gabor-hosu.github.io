@@ -6,9 +6,10 @@ type CollectionName = keyof import("astro:content").DataEntryMap;
 
 type Props = {
   collectionName: CollectionName;
+  isShortDateFormat?: boolean;
 };
 
-const { collectionName } = Astro.props;
+const { collectionName, isShortDateFormat = true } = Astro.props;
 
 const collection = await getCollection(collectionName);
 
@@ -22,6 +23,7 @@ if (!collection) {
     collection.map((previewEntry) => (
       <PreviewElement
         {...previewEntry.data}
+        isShortDateFormat={isShortDateFormat}
         collectionName={collectionName}
         slug={previewEntry.slug}
       />

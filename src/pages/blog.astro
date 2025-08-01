@@ -1,6 +1,7 @@
 ---
 import Search from "astro-pagefind/components/Search";
 import BasePage from "../components/BasePage.astro";
+import PreviewList from "../components/PreviewList.astro";
 ---
 
 <BasePage title="Blog">
@@ -9,5 +10,5 @@ import BasePage from "../components/BasePage.astro";
     className="pagefind-ui"
     uiOptions={{ showImages: false }}
   />
-  <p>Blog</p>
+  <PreviewList collectionName="blog" isShortDateFormat={false} />
 </BasePage>

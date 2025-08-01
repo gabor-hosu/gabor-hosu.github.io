@@ -21,7 +21,10 @@ export default defineConfig({
   markdown: {
     rehypePlugins: [
       [rehypeFigure, { className: "figure", figcaption: true }],
-      [rehypeAddLightboxWrapper, ["src/content/projects/"]],
+      [
+        rehypeAddLightboxWrapper,
+        ["src/content/projects/", "src/content/blog/"],
+      ],
     ],
   },
 });
