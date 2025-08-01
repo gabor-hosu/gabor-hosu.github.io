@@ -1,7 +1,13 @@
 ---
+import Search from "astro-pagefind/components/Search";
 import BasePage from "../components/BasePage.astro";
 ---
 
 <BasePage title="Blog">
+  <Search
+    id="search"
+    className="pagefind-ui"
+    uiOptions={{ showImages: false }}
+  />
   <p>Blog</p>
 </BasePage>
