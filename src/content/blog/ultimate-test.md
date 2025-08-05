@@ -76,6 +76,28 @@ $$
 
 asdasd $(1)$
 
+$$
+f: \mathbb{R}\to\mathbb{R}, f(x) =
+\begin{cases}
+  \frac{1}{x-1}, \text{ ha } x \neq 1, \\
+  \frac{1}{x-1}, \text{ ha } x \neq 1, \\
+  \frac{1}{x-1}, \text{ ha } x \neq 1, \\
+  \frac{1}{x-1}, \text{ ha } x \neq 1, \\
+  \frac{1}{x-1}, \text{ ha } x \neq 1, \\
+  \frac{1}{x-1}, \text{ ha } x \neq 1, \\
+  2, \text{ ha } x = 1
+\end{cases}
+$$
+
+$$
+\left\{
+\begin{array}{ll}
+\text{case 1} & \text{if } x < 0 \\[0.5em]
+\text{case 2} & \text{if } x \ge 0
+\end{array}
+\right.
+$$
+
 ```py showLineNumbers
 def f(a, b):
   return a + b

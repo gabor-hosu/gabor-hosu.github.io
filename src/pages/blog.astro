@@ -5,5 +5,16 @@ import PreviewList from "../components/PreviewList.astro";
 ---
 
 <BasePage title="Blog">
-  <PreviewList collectionName="blog" isShortDateFormat={false} />
+  <div>
+    <Search
+      id="search"
+      className="pagefind-ui sticky top-19 z-50 mb-5"
+      uiOptions={{
+        showImages: false,
+        pageSize: 4,
+        excerptLength: 20,
+      }}
+    />
+    <PreviewList collectionName="blog" isShortDateFormat={false} />
+  </div>
 </BasePage>

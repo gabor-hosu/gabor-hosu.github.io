@@ -26,6 +26,7 @@ body {
     @apply 
         text-[12pt] sm:text-[14pt]
         overflow-x-auto whitespace-nowrap
+        py-1
 }
 
 figure > figcaption {

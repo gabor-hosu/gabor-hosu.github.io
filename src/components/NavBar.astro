@@ -41,18 +41,7 @@ const { class: className, selectedPage } = Astro.props;
       class="mx-6.5"
     />
   </div>
-  <!-- TODO: space for searchbar -->
-  <div class="min-md:w-[60%]">
-    <Search
-      id="search"
-      className="pagefind-ui"
-      uiOptions={{
-        showImages: false,
-        pageSize: 4,
-        excerptLength: 20,
-      }}
-    />
-  </div>
+  <div class="mx-5 flex items-center justify-center min-md:w-[60%]"></div>
   <div class="flex max-sm:order-first max-sm:w-full max-sm:justify-between">
     <button
       type="button"
