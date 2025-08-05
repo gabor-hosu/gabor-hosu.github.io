@@ -96,3 +96,8 @@ ol ol {
         my-5 mx-auto
         max-w-[90%]
 }
+
+code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    background: #f5f2f0;
+}

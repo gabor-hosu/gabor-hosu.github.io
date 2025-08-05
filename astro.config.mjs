@@ -8,6 +8,7 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import rehypeAddLightboxWrapper from "./src/plugins/rehype-add-lightbox-wrapper";
 import pagefind from "astro-pagefind";
+import rehypePrism from "rehype-prism-plus";
 
 // https://astro.build/config
 export default defineConfig({
@@ -21,6 +22,7 @@ export default defineConfig({
 
   integrations: [[icon()], [pagefind()]],
   markdown: {
+    syntaxHighlight: false,
     remarkPlugins: [remarkMath],
     rehypePlugins: [
       [rehypeFigure, { className: "figure", figcaption: true }],
@@ -29,6 +31,7 @@ export default defineConfig({
         ["src/content/projects/", "src/content/blog/"],
       ],
       rehypeKatex,
+      rehypePrism,
     ],
   },
 });

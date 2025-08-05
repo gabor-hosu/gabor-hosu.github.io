@@ -75,3 +75,10 @@ $$
 $$
 
 asdasd $(1)$
+
+```py showLineNumbers
+def f(a, b):
+  return a + b
+```
+
+The code above does something with `arg` arg.
