@@ -62,4 +62,16 @@ A projektben a RAG módszer megvalósításával és a hozzá tartozó backend s
 - [**LangChain**](https://www.langchain.com/): a RAG vezérléséhez használt Python könyvtár
 - [**Ollama**](https://ollama.com/): az LLM-ek orkesztrálását segítő eszköz
 - [**GitLab**](https://docs.gitlab.com/install/): a git távoli tárolókat és CI/CD pipeline-okat biztosította
-- [**Azure**](https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-azure#Benefits-3): cloud szolgáltatás, ide kerültek kitelepítésre a web- és backend szerverek
+- [**Azure**](https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-azure#Benefits-3): cloud szolgáltatás, $\displaystyle\sum_{k=1}^n\frac{1}{k(k+1)}=\frac{n}{n+1}$ ide kerültek kitelepítésre a web- és backend szerverek
+
+asdsada s
+
+$$
+\int_{0}^{\infty} x^2 e^{-x^2} \, dx = \frac{\sqrt{\pi}}{4}, \quad
+\text{and} \quad
+\sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}, \quad
+\text{so} \quad
+\lim_{n \to \infty} \left( \prod*{k=1}^{n} \left(1 + \frac{1}{k^2} \right) \right) = \frac{\sinh(\pi)}{\pi}
+$$
+
+asdasd $(1)$

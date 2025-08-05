@@ -22,6 +22,12 @@ body {
     font-family: var(--main-font);
 }
 
+.katex {
+    @apply 
+        text-[12pt] sm:text-[14pt]
+        overflow-x-auto whitespace-nowrap
+}
+
 figure > figcaption {
     @apply 
         text-[10pt] sm:text-[12pt] 
