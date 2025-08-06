@@ -4,7 +4,7 @@ description: "Állományközpontú chatbot, mely lehetősget nyújt feltöltött
 coverImage:
   url: "./images/bob-web.jpg"
 date:
-  start: "2024-07-25"
+  end: "2024-07-2"
 tags: ["RAG", "backend", "Java"]
 ---
 

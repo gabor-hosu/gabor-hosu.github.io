@@ -1,10 +1,10 @@
 ---
-title: "B.o.B.: Bot of Brilliance RAG módszerre alapozott chatbot"
+title: "B.o.B.: Bot of Brilliance RAG módszerre alapozott chatbot OOLDEST"
 description: "Állományközpontú chatbot, mely lehetősget nyújt feltöltött kép- és szöveges fájlokból való kérdezésre több chatből és azok rendszerezésére.A chatbot elérhető web és mobil platformokon.Az információ előhívás a Retrieval Augmented Generation módszer alapján történik."
 coverImage:
   url: "./images/bob-web.jpg"
 date:
-  start: "2024-07-25"
+  end: "2020-07-25"
 tags: ["RAG", "backend", "Python"]
 ---
 

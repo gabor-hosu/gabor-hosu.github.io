@@ -34,8 +34,8 @@ const postCollection = defineCollection({
         url: image(),
       }),
       date: z.object({
-        start: z.coerce.date(),
-        end: z.coerce.date().optional(),
+        start: z.coerce.date().optional(),
+        end: z.coerce.date(),
       }),
       tags: z.array(z.string()),
     }),

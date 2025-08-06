@@ -1,26 +1,59 @@
 ---
 import PreviewElement from "./PreviewElement.astro";
 import { getCollection } from "astro:content";
+import ArrowForward from "../icons/arrow_forward.svg";
+import ArrowBack from "../icons/arrow_back.svg";
 
 type CollectionName = keyof import("astro:content").DataEntryMap;
 
 type Props = {
   collectionName: CollectionName;
+  pageNumber: number;
+  numOfPostsPerPage: number;
   isShortDateFormat?: boolean;
 };
 
-const { collectionName, isShortDateFormat = true } = Astro.props;
+const {
+  collectionName,
+  pageNumber,
+  numOfPostsPerPage,
+  isShortDateFormat = true,
+} = Astro.props;
 
 const collection = await getCollection(collectionName);
 
 if (!collection) {
   throw new Error(`${collectionName} collection not found`);
 }
+
+const previewEntries = collection.sort((left, right) => {
+  if (
+    right.data.date.end &&
+    left.data.date.end &&
+    right.data.date.end !== left.data.date.end
+  ) {
+    return right.data.date.end - left.data.date.end;
+  }
+  return right.data.date.start - left.data.date.start;
+});
+
+const startIndex = (pageNumber - 1) * numOfPostsPerPage;
+const endIndex = pageNumber * numOfPostsPerPage;
+
+const previewContent = previewEntries.slice(startIndex, endIndex);
+const nextUrl =
+  pageNumber === Math.ceil(collection.length / numOfPostsPerPage)
+    ? undefined
+    : `../../${collectionName}/page/${pageNumber + 1}`;
+const prevUrl =
+  pageNumber === 1
+    ? undefined
+    : `../../${collectionName}/page/${pageNumber - 1}`;
 ---
 
 <div class="flex flex-col gap-15">
   {
-    collection.map((previewEntry) => (
+    previewContent.map((previewEntry) => (
       <PreviewElement
         {...previewEntry.data}
         isShortDateFormat={isShortDateFormat}
@@ -28,5 +61,23 @@ if (!collection) {
         slug={previewEntry.slug}
       />
     ))
+  }
+</div>
+<div class=`mt-5 flex ${prevUrl ? "justify-between" : "justify-end" }`>
+  {
+    prevUrl && (
+      <a href={prevUrl} class="flex items-center">
+        <ArrowBack class={`m-2 size-10 rounded-[12px] bg-(--dark-blue) p-1`} />
+      </a>
+    )
+  }
+  {
+    nextUrl && (
+      <a href={nextUrl} class="flex items-center">
+        <ArrowForward
+          class={`m-2 size-10 rounded-[12px] bg-(--dark-blue) p-1`}
+        />
+      </a>
+    )
   }
 </div>

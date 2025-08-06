@@ -31,7 +31,7 @@ const { projectEntry } = Astro.props;
 const { Content } = await projectEntry.render();
 const { title, date, tags } = projectEntry.data;
 
-const formatDateNoDay = (date: Date) => format(date, "yyyy MM");
+const formatDateNoDay = (date: Date) => format(date, "yyyy. MM.");
 ---
 
 <BasePage title="Projektek">
@@ -43,6 +43,7 @@ const formatDateNoDay = (date: Date) => format(date, "yyyy MM");
       <div
         class="font-(family-name:--secondary-font) text-[10pt] text-(color:--light-gray) md:text-[12pt]"
       >
+        <!-- @ts-ignore -->
         {formatDateNoDay(date.start)} - {formatDateNoDay(date.end)}
       </div>
       <div class="flex justify-end gap-2">

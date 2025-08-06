@@ -8,6 +8,7 @@ import "../../styles/project-pages.css";
 
 // static paths generation for "project/..." pages
 export const getStaticPaths = async () => {
+  //TODO: refactor namings
   const projectEntries = await getCollection("blog");
   const paths = projectEntries.map((blogEntry) => {
     return {
@@ -43,14 +44,14 @@ const formatDate = (date: Date) => format(date, "yyyy. MM. dd.");
       <div
         class="font-(family-name:--secondary-font) text-[10pt] text-(color:--light-gray) md:text-[12pt]"
         data-pagefind-ignore
+        data-pagefind-sort="date"
       >
-        {formatDate(date.start)}
+        {formatDate(date.end)}
       </div>
-      <div class="flex justify-end gap-2">
+      <div class="flex justify-end gap-2" data-pagefind-ignore>
         {tags.map((tag) => <Tag label={tag} />)}
       </div>
     </div>
-
     <Content />
   </div>
 </BasePage>

@@ -18,6 +18,8 @@ export default defineConfig({
 
   redirects: {
     "/": "/about",
+    "/blog": "/blog/page/1",
+    "/projects": "/projects/page/1",
   },
 
   integrations: [[icon()], [pagefind()]],
