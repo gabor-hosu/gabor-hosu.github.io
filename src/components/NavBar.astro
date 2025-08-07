@@ -5,6 +5,7 @@ import ContactIcon from "./ContactIcon.astro";
 import DropDownMenu from "./DropDownMenu.astro";
 import MenuIcon from "../icons/menu.svg";
 import CloseIcon from "../icons/close.svg";
+import "../styles/search-bar.css";
 
 type Props = {
   class?: string;
@@ -39,8 +40,7 @@ const { class: className, selectedPage } = Astro.props;
       class="mx-6.5"
     />
   </div>
-  <!-- TODO: space for searchbar -->
-  <div class="min-md:w-[60%]"></div>
+  <div class="mx-5 flex items-center justify-center min-md:w-[60%]"></div>
   <div class="flex max-sm:order-first max-sm:w-full max-sm:justify-between">
     <button
       type="button"
