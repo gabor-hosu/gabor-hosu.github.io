@@ -4,7 +4,11 @@ import tailwindcss from "@tailwindcss/vite";
 // @ts-ignore
 import rehypeFigure from "rehype-figure";
 import icon from "astro-icon";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 import rehypeAddLightboxWrapper from "./src/plugins/rehype-add-lightbox-wrapper";
+import pagefind from "astro-pagefind";
+import rehypePrism from "rehype-prism-plus";
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,13 +18,22 @@ export default defineConfig({
 
   redirects: {
     "/": "/about",
+    "/blog": "/blog/page/1",
+    "/projects": "/projects/page/1",
   },
 
-  integrations: [icon()],
+  integrations: [[icon()], [pagefind()]],
   markdown: {
+    syntaxHighlight: false,
+    remarkPlugins: [remarkMath],
     rehypePlugins: [
       [rehypeFigure, { className: "figure", figcaption: true }],
-      [rehypeAddLightboxWrapper, ["src/content/projects/"]],
+      [
+        rehypeAddLightboxWrapper,
+        ["src/content/projects/", "src/content/blog/"],
+      ],
+      rehypeKatex,
+      rehypePrism,
     ],
   },
 });

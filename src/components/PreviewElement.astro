@@ -11,27 +11,37 @@ type Props = {
     url: string;
   };
   date: {
-    start: Date;
+    start?: Date;
     end: Date;
   };
   tags: string[];
+  isShortDateFormat: boolean;
   collectionName: string;
   slug: string;
 };
 
-const { title, description, coverImage, date, tags, collectionName, slug } =
-  Astro.props;
+const {
+  title,
+  description,
+  coverImage,
+  date,
+  tags,
+  isShortDateFormat = true,
+  collectionName,
+  slug,
+} = Astro.props;
 
 //TODO: add localization later (with the multilanguage support)
-const formatDateNoDay = (date: Date) => format(date, "yyyy MM");
-const contentUrl = `${collectionName}/${slug}`;
+const formatDateNoDay = (date: Date) => format(date, "yyyy. MM.");
+const formatDate = (date: Date) => format(date, "yyyy. MM. dd.");
+const contentUrl = `../${slug}`;
 ---
 
 <div class="flex flex-col gap-2">
   {/* @ts-ignore */}
   <Image
     src={coverImage.url}
-    alt=" "
+    alt=`Cover image of project ${title}`
     class="rounded-[1.5rem] border-1 border-(--dark-blue)"
   />
 
@@ -43,7 +53,12 @@ const contentUrl = `${collectionName}/${slug}`;
       <div
         class="mt-1 font-(family-name:--secondary-font) text-[10pt] text-(color:--light-gray) md:text-[12pt]"
       >
-        {formatDateNoDay(date.start)} - {formatDateNoDay(date.end)}
+        {
+          date.start
+            ? `${isShortDateFormat ? formatDateNoDay(date.start) : formatDate(date.start)} - `
+            : ""
+        }
+        {isShortDateFormat ? formatDateNoDay(date.end) : formatDate(date.end)}
       </div>
     </div>
 

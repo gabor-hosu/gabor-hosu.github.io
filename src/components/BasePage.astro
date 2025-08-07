@@ -1,5 +1,6 @@
 ---
 import NavBar from "../components/NavBar.astro";
+import "../styles/rehype-prism.css";
 
 type Props = {
   title: string;
@@ -15,6 +16,11 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/prismjs/themes/prism.css" />
+    <link
       href="https://fonts.googleapis.com/css?family=Lora"
       rel="stylesheet"
     />
@@ -26,11 +32,11 @@ const { title } = Astro.props;
     />
     <title>{title}</title>
   </head>
-  <body class="mt-40 flex items-center justify-center">
+  <body class="mt-35 flex items-center justify-center">
     {/*@ts-ignore*/}
     <NavBar
       selectedPage={title}
-      class="fixed top-0 right-0 left-0 z-1 bg-(--white)"
+      class="fixed top-0 right-0 left-0 z-9999 bg-(--white)"
     />
     <div class="mb-10 w-[90vw] sm:w-135 md:w-150 lg:w-200">
       <slot />

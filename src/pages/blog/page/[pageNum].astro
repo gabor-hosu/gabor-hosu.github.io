@@ -1,0 +1,53 @@
+---
+import { getCollection } from "astro:content";
+import Search from "astro-pagefind/components/Search";
+import BasePage from "../../../components/BasePage.astro";
+import PreviewList from "../../../components/PreviewList.astro";
+
+const numOfPostsPerPage = 5;
+
+// static paths generation for "blog/page/{pageNum}" pages, for paginations
+export const getStaticPaths = async () => {
+  const numOfPostsPerPage = 5;
+  const blogEntries = await getCollection("blog");
+  const numOfPages = Math.ceil(blogEntries.length / numOfPostsPerPage);
+  const paths = Array.from({ length: numOfPages }, (_, i) => {
+    return {
+      params: {
+        pageNum: String(i + 1),
+      },
+      props: {
+        pageNum: i + 1,
+      },
+    };
+  });
+  return paths;
+};
+
+type Props = {
+  pageNum: number;
+};
+
+const { pageNum } = Astro.props;
+---
+
+<BasePage title="Blog">
+  <Search
+    id="search"
+    className="pagefind-ui sticky top-19 z-50 mb-5"
+    uiOptions={{
+      showImages: false,
+      pageSize: 4,
+      excerptLength: 20,
+      sort: {
+        date: "desc",
+      },
+    }}
+  />
+  <PreviewList
+    collectionName="blog"
+    isShortDateFormat={false}
+    pageNumber={pageNum}
+    numOfPostsPerPage={numOfPostsPerPage}
+  />
+</BasePage>

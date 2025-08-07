@@ -1,0 +1,76 @@
+@import "./index.css";
+
+.pagefind-ui {
+    --pagefind-ui-scale: 0.8;
+    --pagefind-ui-primary: var(--dark-blue);
+    --pagefind-ui-text: var(--dark-gray);
+    --pagefind-ui-border: slategrey;
+    --pagefind-ui-border-width: 1px;
+    --pagefind-ui-border-radius: 2rem;
+    --pagefind-ui-font: var(--secondary-font);
+}
+
+
+.pagefind-ui .pagefind-ui__drawer:not(.pagefind-ui__hidden) {
+    position: absolute;
+    left: 0;
+    right: 0;
+    /* display: flex;
+    flex-direction: column; */
+    margin-top: 0px;
+    z-index: 9999;
+    padding: 0 2em 1em;
+    height: 70vh; 
+    overflow-y: scroll;
+    box-shadow:
+        0 10px 10px -5px rgba(0, 0, 0, 0.2),
+        0 2px 2px 0 rgba(0, 0, 0, 0.1);
+    /* border-bottom-right-radius: var(--pagefind-ui-border-radius);
+    border-bottom-left-radius: var(--pagefind-ui-border-radius); */
+    background-color: var(--pagefind-ui-background);
+}
+
+.pagefind-ui .pagefind-ui__result-link {
+    color: var(--pagefind-ui-primary);
+}
+
+.pagefind-ui .pagefind-ui__result-excerpt {
+    color: var(--pagefind-ui-text);
+}
+
+.pagefind-ui__filter-value {
+    @apply 
+        rounded-3xl 
+        border-1 border-(--dark-gray) 
+        bg-(color:--light-gray) 
+        pl-4 pr-2 py-1 
+        font-(family-name:--secondary-font) text-[10pt] font-bold 
+        text-white
+        w-fit
+        cursor-pointer
+}
+
+.pagefind-ui__filter-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    display: none;
+}
+  
+.pagefind-ui__filter-value:has(.pagefind-ui__filter-checkbox:checked) {
+    background-color: var(--dark-gray);
+    color: white;
+}
+
+.pagefind-ui__filter-group {
+    display: flex;
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    gap: 0.5rem !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagefind-ui__drawer:not(.pagefind-ui__hidden) {
+    @apply
+        max-lg:flex max-lg:gap-3
+}
