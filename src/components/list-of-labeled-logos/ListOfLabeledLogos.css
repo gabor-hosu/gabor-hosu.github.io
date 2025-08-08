@@ -8,7 +8,9 @@
 }
 
 .figure > img {
-    @apply size-10
+    @apply 
+        size-10 
+        duration-500 hover:scale-125
 }
 
 .figure-container {
