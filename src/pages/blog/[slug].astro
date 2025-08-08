@@ -4,13 +4,12 @@ import { getCollection } from "astro:content";
 import BasePage from "../../layouts/BasePage.astro";
 import { format } from "date-fns";
 import Tag from "../../components/Tag.astro";
-import "../../styles/project-pages.css";
+import "../../styles/content-pages.css";
 
-// static paths generation for "project/..." pages
+// static paths generation for "blog/..." pages
 export const getStaticPaths = async () => {
-  //TODO: refactor namings
-  const projectEntries = await getCollection("blog");
-  const paths = projectEntries.map((blogEntry) => {
+  const blogEntries = await getCollection("blog");
+  const paths = blogEntries.map((blogEntry) => {
     return {
       params: {
         slug: blogEntry.slug,

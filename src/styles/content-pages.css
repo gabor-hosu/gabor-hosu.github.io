@@ -54,7 +54,7 @@
     max-width: 80vw;
     max-height: 80vh;
     cursor: zoom-out;
-    z-index: 1000;
+    z-index: 9999;
     background: rgba(var(--white-rgb), 0.7);
     position: sticky;
   }
@@ -66,7 +66,7 @@
     max-width: 80vw;
     max-height: 80vh;
     cursor: zoom-out;
-    z-index: 1000;
+    z-index: 9999;
     background: rgba(var(--white-rgb), 0.7);
     position: sticky;
   }
@@ -94,6 +94,6 @@
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.3);
-  z-index: 1;
+  z-index: 9998;
 }
 
