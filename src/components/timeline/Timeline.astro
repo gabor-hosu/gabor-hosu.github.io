@@ -21,35 +21,6 @@ if (!entry) {
 const { Content } = await render(entry);
 ---
 
-<div class="timeline-content my-7 opacity-0">
+<div class="timeline-content my-7">
   <Content />
 </div>
-
-<script>
-  const tagContainers = Array.from(document.querySelectorAll("ul")).filter(
-    (ul) =>
-      Array.from(ul.children).some(
-        (li) => li.tagName === "LI" && li.firstElementChild?.tagName === "CODE",
-      ),
-  );
-  tagContainers.map((container) => {
-    container.classList.add("tag-container");
-  });
-
-  const unorderedLists = Array.from(document.querySelectorAll("ul"));
-  const outermostUnorderedLists = unorderedLists.filter(
-    (ul) => !ul.parentElement || !ul.parentElement.closest("ul"),
-  );
-
-  outermostUnorderedLists.map((ul) => {
-    ul.classList.add("timeline-list");
-  });
-
-  // for solving the FOUC issue (with the rendering)
-  const contentWrappers = Array.from(
-    document.getElementsByClassName("timeline-content"),
-  );
-  contentWrappers.map((wrapper) => {
-    wrapper.classList.toggle("opacity-0");
-  });
-</script>
