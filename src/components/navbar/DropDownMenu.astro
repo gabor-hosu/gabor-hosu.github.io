@@ -17,7 +17,7 @@ const { class: className, options, id } = Astro.props;
   class={`hover:text-(--light-gray) cursor-pointer flex ${className}`}
 >
   {
-    options?.map((option: any) => (
+    options?.map((option: { varName: string; name: string }) => (
       <option value={option.varName}>{option.name}</option>
     ))
   }

@@ -27,7 +27,6 @@ const {
   date,
   tags,
   isShortDateFormat = true,
-  collectionName,
   slug,
 } = Astro.props;
 
@@ -41,7 +40,7 @@ const contentUrl = `../${slug}`;
   <div
     class="mx-auto w-[95%] overflow-hidden rounded-[1.5rem] border-1 border-(--dark-blue)"
   >
-    {/* @ts-ignore */}
+    {/*@ts-expect-error: no problem, cuz dynamic image loading*/}
     <Image
       src={coverImage.url}
       alt=`Cover image of project ${title}`

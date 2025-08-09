@@ -1,3 +1,4 @@
+/* eslint-env browser */
 import { visit } from "unist-util-visit"; // doesn't gives as ancestor list of a node
 import { visitParents } from "unist-util-visit-parents";
 
@@ -11,7 +12,7 @@ export default function rehypeAddTimelineClasses(allowedDirs) {
     }
 
     // mark containers for tags
-    visit(tree, { tagName: "ul" }, (node, index, parent) => {
+    visit(tree, { tagName: "ul" }, (node) => {
       const hasLiChildWithChildCode = Array.from(node.children).some(
         (c) =>
           c.tagName === "li" && c.children && c.children[0].tagName === "code",

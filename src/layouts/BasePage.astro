@@ -34,7 +34,7 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body class="mt-35 flex items-center justify-center">
-    {/*@ts-ignore*/}
+    {/*@ts-expect-error: no problem*/}
     <NavBar
       selectedPage={title}
       class="fixed top-0 right-0 left-0 z-9998 bg-(--white)"
