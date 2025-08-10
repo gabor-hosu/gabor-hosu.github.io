@@ -5,7 +5,7 @@
 
 - ### Szakmai gyakorlat, [Codespring](https://www.codespring.ro/mentoring-at-codespring)
 
-  **Kolozsvár, Románia - 2024 júl. - 2024 aug.**
+  **Kolozsvár, Románia - 2024. 07. - 2024. 09.**
   - A cég által biztosított mentorok koordinálása alatt dolgoztam a B.o.B. chatbot projekten.
   - A fejlesztés két személyes csapatban történt Scrum munkamódszert alkalmazva.
   - A szerver oldalt fejlesztettem. Felhasznált technológiák:
@@ -22,7 +22,7 @@
 
 - ### Fullstack mentorprogram, [Codespring](https://www.codespring.ro/mentoring-at-codespring)
 
-  **Kolozsvár, Románia - 2023 okt. - 2024 máj.**
+  **Kolozsvár, Románia - 2023. 10. - 2024. 05.**
   - A szakmai gyakorlatra felkészítő képzéssorozat, amely havonta 2 képzésből állt.
   - Megismert technológiák:
     - `Java`

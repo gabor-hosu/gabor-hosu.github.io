@@ -1,8 +1,8 @@
 ---
 import { Image } from "astro:assets";
-import "../styles/index.css";
+import "../../styles/index.css";
 import { format } from "date-fns";
-import Tag from "./Tag.astro";
+import Tag from "../Tag.astro";
 
 type Props = {
   title: string;
@@ -27,7 +27,6 @@ const {
   date,
   tags,
   isShortDateFormat = true,
-  collectionName,
   slug,
 } = Astro.props;
 
@@ -38,13 +37,16 @@ const contentUrl = `../${slug}`;
 ---
 
 <div class="flex flex-col gap-2">
-  {/* @ts-ignore */}
-  <Image
-    src={coverImage.url}
-    alt=`Cover image of project ${title}`
-    class="rounded-[1.5rem] border-1 border-(--dark-blue)"
-  />
-
+  <div
+    class="mx-auto w-[95%] overflow-hidden rounded-[1.5rem] border-1 border-(--dark-blue)"
+  >
+    {/*@ts-expect-error: no problem, cuz dynamic image loading*/}
+    <Image
+      src={coverImage.url}
+      alt=`Cover image of project ${title}`
+      class="h-full rounded-[1.5rem] object-cover"
+    />
+  </div>
   <div>
     <div class="my-2">
       <a href={contentUrl}>
