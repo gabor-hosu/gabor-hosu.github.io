@@ -1,4 +1,4 @@
-@import "../styles/index";
+@import "../../styles/index";
 
 code {
     @apply 
@@ -6,7 +6,8 @@ code {
         bg-(color:--light-gray) 
         px-2 py-1 
         font-(family-name:--secondary-font) text-[10pt] font-bold 
-        text-white;
+        text-white
+        inline-block duration-500 hover:scale-115;
 }
 
 strong {
@@ -79,5 +80,9 @@ ul:not(.tag-container).timeline-list > li:last-child::after {
 }
 
 p {
-    @apply py-0
+    @apply py-0;
+}
+
+h3 > a {
+    @apply duration-500 hover:text-(--skin);
 }

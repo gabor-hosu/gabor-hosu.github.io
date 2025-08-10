@@ -1,0 +1,26 @@
+---
+import "./Timeline.css";
+
+import { getEntry, render } from "astro:content";
+
+type CollectionName = keyof import("astro:content").DataEntryMap;
+
+type Props = {
+  collectionName?: CollectionName;
+  entryName: string;
+};
+
+const { collectionName = "timeline", entryName } = Astro.props;
+
+const entry = await getEntry(collectionName, entryName);
+
+if (!entry) {
+  throw new Error(`${entryName} entry not found`);
+}
+
+const { Content } = await render(entry);
+---
+
+<div class="timeline-content my-7">
+  <Content />
+</div>

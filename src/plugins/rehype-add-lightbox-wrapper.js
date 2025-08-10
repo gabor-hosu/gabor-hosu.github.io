@@ -1,3 +1,4 @@
+/* eslint-env browser */
 import { visit } from "unist-util-visit";
 
 let uniqueId = 0;

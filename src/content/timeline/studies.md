@@ -3,6 +3,10 @@
 
 ## Tanulmányok
 
+- ### Adatelemzés és modellezés - Mesterképzés, [Babeș-Bolyai Tudományegyetem](https://www.ubbcluj.ro/hu/facultati/matematica_informatica)
+
+  **Kolozsvár, Románia - 2025 - jelen**
+
 - ### Matematikai Informatika - Alapképzés, [Babeș-Bolyai Tudományegyetem](https://www.ubbcluj.ro/hu/facultati/matematica_informatica)
 
   **Kolozsvár, Románia - 2022 - 2025**

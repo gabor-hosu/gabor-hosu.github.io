@@ -9,6 +9,7 @@ import rehypeKatex from "rehype-katex";
 import rehypeAddLightboxWrapper from "./src/plugins/rehype-add-lightbox-wrapper";
 import pagefind from "astro-pagefind";
 import rehypePrism from "rehype-prism-plus";
+import rehypeAddTimelineClasses from "./src/plugins/rehype-add-timeline-classes";
 
 // https://astro.build/config
 export default defineConfig({
@@ -32,6 +33,7 @@ export default defineConfig({
         rehypeAddLightboxWrapper,
         ["src/content/projects/", "src/content/blog/"],
       ],
+      [rehypeAddTimelineClasses, ["src/content/timeline/"]],
       rehypeKatex,
       rehypePrism,
     ],
