@@ -1,0 +1,67 @@
+name: Pipeline for lint, build, deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.17.0
+
+      - name: Enable Yarn
+        run: corepack enable
+
+      - name: Install dependencies
+        run: yarn install --production=false --frozen-lockfile
+
+      - name: Build
+        run: yarn eslint .
+
+  build:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.17.0
+
+      - name: Enable Yarn
+        run: corepack enable
+
+      - name: Install dependencies
+        run: yarn install --production --frozen-lockfile
+
+      - name: Build Astro files
+        run: yarn build
+
+      - name: Upload static files artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          name: portfolio-static-files
+          path: dist
+
+  deploy:
+    needs: build
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy static artifact
+        id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: portfolio-static-files

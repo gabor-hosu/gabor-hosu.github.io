@@ -1,6 +1,0 @@
-name: Pipeline for lint, build, deploy
-
-jobs:
-  lint:
-  build:
-  deploy:
