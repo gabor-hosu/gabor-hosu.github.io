@@ -44,11 +44,9 @@ const previewContent = previewEntries.slice(startIndex, endIndex);
 const nextUrl =
   pageNumber === Math.ceil(collection.length / numOfPostsPerPage)
     ? undefined
-    : `../../${collectionName}/page/${pageNumber + 1}`;
+    : `/${collectionName}/page/${pageNumber + 1}`;
 const prevUrl =
-  pageNumber === 1
-    ? undefined
-    : `../../${collectionName}/page/${pageNumber - 1}`;
+  pageNumber === 1 ? undefined : `/${collectionName}/page/${pageNumber - 1}`;
 ---
 
 <div class="flex flex-col gap-15">
