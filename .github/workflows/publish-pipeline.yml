@@ -1,0 +1,97 @@
+name: Merge posts into main on tag
+
+on:
+  push:
+    tags:
+      - "publish*"
+
+env:
+  SOURCE_BRANCH: publish
+  TARGET_BRANCH: develop
+
+jobs:
+  merge_posts_to_main:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # allow pushing commits
+
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.TARGET_BRANCH }}
+          fetch-depth: 0
+
+      - name: Setup git user config
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Squash merge publish branch preferring incoming changes
+        run: |
+          git fetch origin $SOURCE_BRANCH
+          git checkout -b $SOURCE_BRANCH "origin/$SOURCE_BRANCH"
+          git checkout $TARGET_BRANCH
+          git merge --squash $SOURCE_BRANCH
+          git log --graph --oneline || {
+            git checkout --theirs .
+            git add -A
+          }
+
+      - name: Push changes to main
+        run: |
+          if ! git diff --cached --quiet; then
+            git commit -m "Squash merge $SOURCE_BRANCH into $TARGET_BRANCH"
+            git push origin $TARGET_BRANCH
+          else
+            echo "No changes to commit."
+          fi
+
+      - name: Sync publish remote branch with main branch
+        run: |
+          git checkout $SOURCE_BRANCH
+          git fetch origin $TARGET_BRANCH
+          git reset --hard "origin/$TARGET_BRANCH"
+          git push -f origin $SOURCE_BRANCH
+
+  build:
+    needs: merge_posts_to_main
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.17.0
+
+      - name: Enable Yarn
+        run: corepack enable
+
+      - name: Install dependencies
+        run: yarn install --production --frozen-lockfile
+
+      - name: Build Astro files
+        run: yarn build
+
+      - name: Upload static files artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          name: portfolio-static-files
+          path: dist
+
+  deploy:
+    needs: build
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy static artifact
+        id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: portfolio-static-files
