@@ -27,13 +27,14 @@ const {
   date,
   tags,
   isShortDateFormat = true,
+  collectionName,
   slug,
 } = Astro.props;
 
 //TODO: add localization later (with the multilanguage support)
 const formatDateNoDay = (date: Date) => format(date, "yyyy. MM.");
 const formatDate = (date: Date) => format(date, "yyyy. MM. dd.");
-const contentUrl = `../${slug}`;
+const contentUrl = `/${collectionName}/${slug}`;
 ---
 
 <div class="flex flex-col gap-2">
