@@ -7,5 +7,7 @@ title: Főbb technológiák
 ![LangChain](./images/main-technologies/langchain.svg)
 ![Docker](./images/main-technologies/docker.svg)
 ![Microsoft SQL Server](./images/main-technologies/mssql.svg)
-![Milvus](./images/main-technologies/milvus.svg)
+
+<!-- ![Milvus ](./images/main-technologies/milvus.svg) -->
+
 ![Azure](./images/main-technologies/azure.svg)
