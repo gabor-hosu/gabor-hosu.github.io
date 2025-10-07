@@ -8,7 +8,7 @@ const numOfPostsPerPage = 5;
 // static paths generation for "projects/page/{pageNum}" pages, for paginations
 export const getStaticPaths = async () => {
   const numOfPostsPerPage = 5;
-  const projectsEntries = await getCollection("blog");
+  const projectsEntries = await getCollection("projects");
   const numOfPages = Math.ceil(projectsEntries.length / numOfPostsPerPage);
   const paths = Array.from({ length: numOfPages }, (_, i) => {
     return {

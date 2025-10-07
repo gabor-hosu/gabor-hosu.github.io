@@ -4,8 +4,8 @@ description: "Állományközpontú chatbot, mely lehetősget nyújt feltöltött
 coverImage:
   url: "./images/bob-web.jpg"
 date:
-  start: "2024-07-25"
-  end: "2024-09-20"
+  start: "2024-07"
+  end: "2025-02"
 tags: ["RAG", "backend", "Python"]
 ---
 
@@ -41,16 +41,6 @@ Az alkalmazás fejlesztése a [Codespring](https://www.codespring.ro/) cég ált
 
 A projektben a RAG módszer megvalósításával és a hozzá tartozó backend szerver funkcióinak megtervezésével, és azok implementálásával foglalkoztam. A RAG módszer kivitelezése során részletesebben megismerkedtem a nagy nyelvi modellek és vektoradatbázisok működésével.
 
-## Architektúra
-
-![A chatrendszer architekturális felépítése a rendszert alkotó komponensekkel és azok viszonyait jellemző kommunikációs kapcsolatokkal](./images/bob-global-architecture.svg)
-
-![A fejlesztés alatt a cég által biztosított Azure Cloud erőforráscsoportba került kitelepítésre a web- és backend szerver](./images/bob-azure.svg)
-
-![A backend szerver architekturális felépítése](./images/bob-backend-architecture.svg)
-
-![A lokálisan futatott LLM-re épülő RAG rendszer architekturája](./images/bob-rag-architecture.svg)
-
 ## Felhasznált technológiák - szerveroldal
 
 - [**Python**](https://www.python.org/downloads/release/python-3110/): szerveroldalon felhasznált programozási nyelv
@@ -64,3 +54,24 @@ A projektben a RAG módszer megvalósításával és a hozzá tartozó backend s
 - [**Ollama**](https://ollama.com/): az LLM-ek orkesztrálását segítő eszköz
 - [**GitLab**](https://docs.gitlab.com/install/): a git távoli tárolókat és CI/CD pipeline-okat biztosította
 - [**Azure**](https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-azure#Benefits-3): cloud szolgáltatás, ide kerültek kitelepítésre a web- és backend szerverek
+
+## Architektúra
+
+![A chatrendszer architekturális felépítése a rendszert alkotó komponensekkel és azok viszonyait jellemző kommunikációs kapcsolatokkal](./images/bob-global-architecture.svg)
+
+![A fejlesztés alatt a cég által biztosított Azure Cloud erőforráscsoportba került kitelepítésre a web- és backend szerver](./images/bob-azure.svg)
+
+![A backend szerver architekturális felépítése](./images/bob-backend-architecture.svg)
+
+![A lokálisan futatott LLM-re épülő RAG rendszer architekturája](./images/bob-rag-architecture.svg)
+
+## Elért eredmények
+
+A projekt alapját képezte:
+
+- egy tudomámyos dolgozatnak, amely bemutatásra került az _XXVIII. Erdélyi Tudományos Diákköri Konferencia Informatika II.: Innovatív Számítástechnikai Termékek, Alkalmazások_ szekcióján, ahol _II. helyezést_ ért el.
+- egy cikknek, mely bemutatásra került a _IEEE 23rd International Symposium on Intelligent Systems and Informatics (SISY 2025)_, a cikk preprint változata elérhető [itt](https://edu.codespring.ro/wp-content/uploads/2025/10/BOB___Copy_.pdf).
+
+## Megjegyzések
+
+A fentebbi diagrammok, ábrák a IEEE cikk preprint változatán alapszanak. A cikk publikálása után annak eredeti elérhetősége is megosztásra kerül.

@@ -32,8 +32,7 @@ jobs:
           git fetch origin $SOURCE_BRANCH
           git checkout -b $SOURCE_BRANCH "origin/$SOURCE_BRANCH"
           git checkout $TARGET_BRANCH
-          git merge --squash $SOURCE_BRANCH
-          git log --graph --oneline || {
+          git merge --squash $SOURCE_BRANCH || {
             git checkout --theirs .
             git add -A
           }
