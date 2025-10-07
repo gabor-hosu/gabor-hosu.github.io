@@ -2,7 +2,8 @@
 title: Főbb technológiák
 ---
 
-![Python](./images/main-technologies/python.svg)
+<!-- ![Python](./images/main-technologies/python.svg) -->
+
 ![FastAPI](./images/main-technologies/fastapi.svg)
 ![LangChain](./images/main-technologies/langchain.svg)
 ![Docker](./images/main-technologies/docker.svg)
