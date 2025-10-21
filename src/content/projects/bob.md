@@ -70,8 +70,4 @@ A projektben a RAG módszer megvalósításával és a hozzá tartozó backend s
 A projekt alapját képezte:
 
 - egy tudomámyos dolgozatnak, amely bemutatásra került az _XXVIII. Erdélyi Tudományos Diákköri Konferencia Informatika II.: Innovatív Számítástechnikai Termékek, Alkalmazások_ szekcióján, ahol _II. helyezést_ ért el.
-- egy cikknek, mely bemutatásra került a _IEEE 23rd International Symposium on Intelligent Systems and Informatics (SISY 2025)_, a cikk preprint változata elérhető [itt](https://edu.codespring.ro/wp-content/uploads/2025/10/BOB___Copy_.pdf).
-
-## Megjegyzések
-
-A fentebbi diagrammok, ábrák a IEEE cikk preprint változatán alapszanak. A cikk publikálása után annak eredeti elérhetősége is megosztásra kerül.
+- egy cikknek, mely bemutatásra került a _IEEE 23rd International Symposium on Intelligent Systems and Informatics (SISY 2025)_, a cikk preprint változata elérhető [itt](https://edu.codespring.ro/wp-content/uploads/2025/10/BOB___Copy_.pdf). Ez a preprint változat kizárólag személyes és oktatási célokra került megosztásra. A cikk végleges, IEEE által kiadott változata az alábbi linken érhető el: https://doi.org/10.1109/SISY67000.2025.11205379
