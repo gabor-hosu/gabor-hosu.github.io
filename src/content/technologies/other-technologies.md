@@ -1,5 +1,5 @@
 ---
-title: Más technológiák
+title: Other technologies
 ---
 
 ![Java](./images/other-technologies/java.svg)

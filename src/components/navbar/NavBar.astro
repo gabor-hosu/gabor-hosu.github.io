@@ -9,7 +9,7 @@ import "../../styles/search-bar.css";
 
 type Props = {
   class?: string;
-  selectedPage: "Rólam" | "Projektek" | "Blog";
+  selectedPage: "About" | "Projects" | "Blog";
 };
 
 const { class: className, selectedPage } = Astro.props;
@@ -22,15 +22,15 @@ const { class: className, selectedPage } = Astro.props;
     class="is-in-mobile-menu flex items-center max-sm:mt-5 max-sm:hidden max-sm:flex-col max-sm:gap-5 min-sm:ml-[10%] min-md:justify-stretch"
   >
     <NavElement
-      name="Rólam"
+      name="About"
       href="/about"
-      isSelected={selectedPage === "Rólam"}
+      isSelected={selectedPage === "About"}
       class="mx-6.5"
     />
     <NavElement
-      name="Projektek"
+      name="Projects"
       href="/projects/page/1"
-      isSelected={selectedPage === "Projektek"}
+      isSelected={selectedPage === "Projects"}
       class="mx-6.5"
     />
     <NavElement
@@ -58,8 +58,8 @@ const { class: className, selectedPage } = Astro.props;
     class="is-in-mobile-menu max-sm:mt-8 max-sm:hidden min-sm:mr-[10%] min-sm:ml-[6%]"
     id="language-selector"
     options={[
-      { varName: "hungarian", name: "Magyar" },
       { varName: "english", name: "English" },
+      { varName: "hungarian", name: "Magyar" },
     ]}
   />
 </nav>

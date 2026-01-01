@@ -3,10 +3,10 @@ name:
   first: Gábor
   last: Hosu
 location:
-  city: Kolozsvár
-  country: Románia
+  city: Cluj-Napoca
+  country: Romania
 image:
   url: "./images/profile-picture.jpg"
 ---
 
-Egyetemista vagyok backend fejlesztési tapasztalattal és erős matematikai háttérrel. Különösen érdekelnek a nagy nyelvi modellek, az NLP és az adatelemzéshez kapcsolódó technológiák.
+I am a university student with a strong mathematical foundation and hands-on backend development experience. I am passionate about designing and building machine learning systems, especially in natural language processing, information retrieval, and applied data science.

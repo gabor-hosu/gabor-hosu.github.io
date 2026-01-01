@@ -1,16 +1,30 @@
 ---
 ---
 
-## Tanulmányok
+## Education
 
-- ### Adatelemzés és modellezés - Mesterképzés, [Babeș-Bolyai Tudományegyetem](https://www.ubbcluj.ro/hu/facultati/matematica_informatica)
+- ### Data Analysis and Modeling &middot; MSc | [Babeș-Bolyai University](https://www.ubbcluj.ro/hu/facultati/matematica_informatica)
 
-  **Kolozsvár, Románia - 2025 - jelen**
+  **2025 - Present &middot; Cluj-Napoca, Romania**
 
-- ### Matematikai Informatika - Alapképzés, [Babeș-Bolyai Tudományegyetem](https://www.ubbcluj.ro/hu/facultati/matematica_informatica)
+- ### Math & CS &middot; BSc | [Babeș-Bolyai University](https://www.ubbcluj.ro/hu/facultati/matematica_informatica)
 
-  **Kolozsvár, Románia - 2022 - 2025**
+  **2022 - 2025 &middot; Cluj-Napoca, Romania**
+  - Selected **math courses**:
+    - `Linear Algebra`
+    - `Real Analysis`
+    - `Statistics`
+    - `Numerical Analysis`
+    - `Geometry`
+    - `ODEs`
+    - `PDEs`
+  - Selected **CS courses**:
+    - `Algorithms`
+    - `Data Structures`
+    - `Operating Systems`
+    - `OOP`
+    - `Databases`
 
-- ### Pedagógiai modul (matematika), [Babeș-Bolyai Tudományegyetem](https://www.ubbcluj.ro/hu)
+- ### Mathematics Pedagogy Module | [Babeș-Bolyai University](https://www.ubbcluj.ro/hu)
 
-  **Kolozsvár, Románia - 2022 - 2025**
+  **2022 - 2025 &middot; Cluj-Napoca, Romania**

@@ -1,29 +1,34 @@
 ---
 ---
 
-## Tapasztalat
+## Experience
 
-- ### Szakmai gyakorlat, [Codespring](https://www.codespring.ro/mentoring-at-codespring)
+- ### Software Engineering Internship | [Codespring](https://www.codespring.ro/mentoring-at-codespring)
 
-  **Kolozsvár, Románia - 2024. 07. - 2024. 09.**
-  - A cég által biztosított mentorok koordinálása alatt dolgoztam a B.o.B. chatbot projekten.
-  - A fejlesztés két személyes csapatban történt Scrum munkamódszert alkalmazva.
-  - A szerver oldalt fejlesztettem. Felhasznált technológiák:
+  **2024-07 - 2024-09 &middot; Cluj-Napoca, Romania**
+  - Built the backend of a **RAG-based chatbot** under senior mentorship
+  - Worked in a **2-person Scrum team**, contributing to sprint planning and delivery
+  - Designed **REST APIs** and integrated **vector-based retrieval** for context-aware responses
+  - Containerized services and supported **CI/CD-driven deployments on Azure**
+  - Developed a system that later formed the basis of a **local conference award** and an **IEEE-published research paper**
+  - **Tech:**
     - `Python`
     - `FastAPI`
-    - `Docker`
-    - `GitLab CI/CD`
-    - `LangChain`
     - `MS SQL`
     - `Milvus`
-  - A fejlesztést megelőzve megismert technológiák:
+    - `LangChain`
+    - `Docker`
+    - `Azure`
+    - `GitLab CI/CD`
+  - **Familiarity (pre-development):**
     - `Javascript`
     - `React`
 
-- ### Fullstack mentorprogram, [Codespring](https://www.codespring.ro/mentoring-at-codespring)
+- ### Fullstack mentorprogram | [Codespring](https://www.codespring.ro/mentoring-at-codespring)
 
-  **Kolozsvár, Románia - 2023. 10. - 2024. 05.**
-  - A szakmai gyakorlatra felkészítő képzéssorozat, amely havonta 2 képzésből állt.
-  - Megismert technológiák:
+  **2023-10 - 2024-05 &middot; Cluj-Napoca, Romania**
+  - Participated in a **pre-internship professional training program**, consisting of **2&nbsp;sessions per month**
+  - Gained hands-on experience with **fullstack technologies** and practical software development concepts
     - `Java`
     - `Spring`
+    - `React`
