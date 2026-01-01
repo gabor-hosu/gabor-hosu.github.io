@@ -32,8 +32,8 @@ const {
 } = Astro.props;
 
 //TODO: add localization later (with the multilanguage support)
-const formatDateNoDay = (date: Date) => format(date, "yyyy. MM.");
-const formatDate = (date: Date) => format(date, "yyyy. MM. dd.");
+const formatDateNoDay = (date: Date) => format(date, "yyyy-MM");
+const formatDate = (date: Date) => format(date, "yyyy-MM-dd");
 const contentUrl = `/${collectionName}/${slug}`;
 ---
 

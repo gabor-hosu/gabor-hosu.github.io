@@ -31,7 +31,7 @@ const { projectEntry } = Astro.props;
 const { Content } = await projectEntry.render();
 const { title, date, tags } = projectEntry.data;
 
-const formatDateNoDay = (date: Date) => format(date, "yyyy. MM.");
+const formatDateNoDay = (date: Date) => format(date, "yyyy-MM");
 ---
 
 <BasePage title="Projektek">

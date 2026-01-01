@@ -1,6 +1,6 @@
 ---
-title: "B.o.B.: Bot of Brilliance RAG módszerre alapozott chatbot"
-description: "Állományközpontú chatbot, mely lehetősget nyújt feltöltött kép- és szöveges fájlokból való kérdezésre több chatből és azok rendszerezésére.A chatbot elérhető web és mobil platformokon.Az információ előhívás a Retrieval Augmented Generation módszer alapján történik."
+title: "B.o.B.: Bot of Brilliance - Intelligent File-Oriented RAG Chatbot"
+description: "This is a file-oriented chatbot that allows users to ask questions about uploaded text and image files across multiple conversations, while keeping the files organized. The chatbot is accessible on both web and mobile platforms. Information retrieval is powered by a Retrieval Augmented Generation (RAG) approach."
 coverImage:
   url: "./images/bob-web.jpg"
 date:
@@ -9,65 +9,67 @@ date:
 tags: ["RAG", "backend", "Python"]
 ---
 
-## A projektről
+## About the project
 
-A mindennapokban gyakran nehézséget okoz, hogy egy adott témához gyorsan és hatékonyan találjunk releváns információt korábbi forrásokra vagy dokumentumokra alapozva. Bár a nagy nyelvi modellekre épülő chatbotok, mint például a ChatGPT, képesek dokumentumalapú kérdések megválaszolására, ezek a rendszerek nem feltétlenül optimalizáltak több fájl egyidejű kezelésére vagy a feltöltött tartalmak későbbi elérésére.
+In daily life, quickly and efficiently finding relevant information on a specific topic from existing sources or documents can be challenging. While large language model-based chatbots, like ChatGPT, can answer questions based on documents, they are not always designed to handle multiple files at once or to retain efficient access to uploaded content for future use.
 
-A _B.o.B – Bot of Brilliance_ projekt ezt a hiányosságot célozza meg, egy olyan chatrendszerrel, amely _web_- és _mobilalkalmazásként_ is elérhető.
+The _B.o.B: Bot of Brilliance_ project addresses these shortcomings by providing access to a chat system available as both web and mobile applications.
 
-![A chatfelület a webalkalmazásban. Egy példa-beszélgetés a szendvicskészítésről.](./images/bob-web.jpg)
+![The chat interface in the web application, showing an example conversation about making a sandwich.](./images/bob-web.jpg)
 
-Webfelületen az alábbi funkcionalitások érhetőek el:
+The web platform provides the following functionalities:
 
-- Felhasználói hitelesítése email-cím és jelszó, illetve Google fiók alapján
-- Beszélgetések kezelése, korábbi beszélgetések megtekintétese
-- Feltöltött szöveges fájlokból (PDF, DOCX, TXT) és képekből (PNG, JPG, JPEG) való kérdezés
-- A forrásállományok hozzárendelhetőek és hozzárendelésük visszavonható minden beszélgetéshez
-- A feltöltött fájlok mappákba szervezhetőek a globális fájlkezelő által.
+- User authentication via email and password or through a Google account
+- Viewing and managing previous conversations
+- Asking questions based on uploaded text files (PDF, DOCX, TXT) and image files (PNG, JPG)
+- Attaching and detaching source files to and from existing conversations
+- Organizing uploaded files into folders using a global file explorer
 
-A mobilalkalmazás lehetőséget biztosít a fotózás által történő kontextusbevitelre.
+The mobile application allows users to provide contextual input through photos.
 
-![A korábbi beszélgetés mobilakalmazásban a fotózással bevitt forrás esetén.](./images/bob-mobile.jpg)
+![The previous conversation in the mobile app, in the case of a source entered via a photo.](./images/bob-mobile.jpg)
 
-## Demó
+## Demo
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/NmOXj12kgGM?si=ngcULVW31ARS5obt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="video"></iframe>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/tH4QE0CiazM?si=t5JdFRSIkL7l04Ga" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="video"></iframe>
 
-## A fejlesztésről
+## About the development
 
-Az alkalmazás fejlesztése a [Codespring](https://www.codespring.ro/) cég által támogatott 2024-es szakmai gyakorlat alatt kezdődött el. Az alkalmazást egy egyetemista [csoporttársammal](https://github.com/AkosKr) együtt fejlesztettük közösen az egyetemi államvizsgavédésig.
+The development of the application began in 2024 during my internship at [Codespring](https://www.codespring.ro/). I worked on the project together with my university group mate, and we continued developing it throughout our studies until the defense of our bachelor's thesis.
 
-A projektben a RAG módszer megvalósításával és a hozzá tartozó backend szerver funkcióinak megtervezésével, és azok implementálásával foglalkoztam. A RAG módszer kivitelezése során részletesebben megismerkedtem a nagy nyelvi modellek és vektoradatbázisok működésével.
+In the project, I was responsible for designing and implementing the Retrieval Augmented Generation (RAG) approach, as well as the related backend server functionalities. Through the implementation of the RAG method, I gained a deeper understanding of the inner workings of large language models and vector databases.
 
-## Felhasznált technológiák - szerveroldal
+## Server side technologies
 
-- [**Python**](https://www.python.org/downloads/release/python-3110/): szerveroldalon felhasznált programozási nyelv
-- [**FastAPI**](https://fastapi.tiangolo.com/): a REST API-ok ebben a keretrendszerben kerültek megvalósításra [**Hypercorn**](https://github.com/pgjones/hypercorn) HTTP szervert használva
-- [**SQLAlchemy**](https://www.sqlalchemy.org/): a fő [**MS SQL**](https://www.microsoft.com/en-us/sql-server/sql-server-2019) adatbázis kezeléséz biztosító ORM keretrendszer
-- [**Firebase**](https://firebase.google.com/): a feltöltött fájlok tárolását és Google third-party felhasználók kezelését biztosította
-- [**Milvus**](https://milvus.io/): a RAG-hoz használt vektoradatbázis, mely a cég által nyújtott, lokális szerveren került futtatásra
-- [**Mistral**](https://mistral.ai/news/announcing-mistral-7b): a kérdésválaszolást biztosító, lokálisan futtatott, dekóder LLM
-- [**all-MiniLM-L6-v2**](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2): a fájlok kódolását nyújtó enkóder LLM
-- [**LangChain**](https://www.langchain.com/): a RAG vezérléséhez használt Python könyvtár
-- [**Ollama**](https://ollama.com/): az LLM-ek orkesztrálását segítő eszköz
-- [**GitLab**](https://docs.gitlab.com/install/): a git távoli tárolókat és CI/CD pipeline-okat biztosította
-- [**Azure**](https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-azure#Benefits-3): cloud szolgáltatás, ide kerültek kitelepítésre a web- és backend szerverek
+- [**Python**](https://www.python.org/downloads/release/python-3110/): programming language used on the server side
+- [**FastAPI**](https://fastapi.tiangolo.com/): framework used to implement the REST APIs, running on the [**Hypercorn**](https://github.com/pgjones/hypercorn) HTTP server
+- [**SQLAlchemy**](https://www.sqlalchemy.org/): ORM framework used to manage the primary [**MS SQL**](https://www.microsoft.com/en-us/sql-server/sql-server-2019) database
+- [**Firebase**](https://firebase.google.com/): provided storage for uploaded files and handled Google third-party user authentication
+- [**Milvus**](https://milvus.io/): vector database used for RAG, deployed on a **local server** provided by the company
+- [**Mistral**](https://mistral.ai/news/announcing-mistral-7b): locally hosted decoder LLM responsible for question answering
+- [**all-MiniLM-L6-v2**](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2): encoder LLM used for embedding uploaded files
+- [**LangChain**](https://www.langchain.com/): Python library used to orchestrate the RAG pipeline
+- [**Ollama**](https://ollama.com/): tool used for orchestrating and managing LLMs
+- [**GitLab**](https://docs.gitlab.com/install/): provided remote Git repositories and CI/CD pipelines
+- [**Azure**](https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-azure#Benefits-3): cloud platform used to deploy the containerized web and backend servers
 
-## Architektúra
+## Architecture
 
-![A chatrendszer architekturális felépítése a rendszert alkotó komponensekkel és azok viszonyait jellemző kommunikációs kapcsolatokkal](./images/bob-global-architecture.svg)
+![The architectural of the chat system, including its components and the communication relationships between them.](./images/bob-global-architecture.svg)
 
-![A fejlesztés alatt a cég által biztosított Azure Cloud erőforráscsoportba került kitelepítésre a web- és backend szerver](./images/bob-azure.svg)
+![During development, the web and backend servers were deployed to the Azure Cloud resource group provided by the company.](./images/bob-azure.svg)
 
-![A backend szerver architekturális felépítése](./images/bob-backend-architecture.svg)
+![The architecture of the backend server.](./images/bob-backend-architecture.svg)
 
-![A lokálisan futatott LLM-re épülő RAG rendszer architekturája](./images/bob-rag-architecture.svg)
+![The architecture of the RAG system based on a locally hosted LLM/](./images/bob-rag-architecture.svg)
 
-## Elért eredmények
+## Achievements
 
-A projekt alapját képezte:
+- Awarded **2nd place** at the _XXVIII. Transylvanian Scientific Student Conference, Informatics II: Innovative Computing Products and Applications_.
+- **Paper published** at the _IEEE 23rd International Symposium on Intelligent Systems and Informatics (SISY 2025)_; a preprint is available [here](https://edu.codespring.ro/wp-content/uploads/2025/10/BOB___Copy_.pdf), with the final IEEE version accessible [here](https://doi.org/10.1109/SISY67000.2025.11205379).
 
-- egy tudomámyos dolgozatnak, amely bemutatásra került az _XXVIII. Erdélyi Tudományos Diákköri Konferencia Informatika II.: Innovatív Számítástechnikai Termékek, Alkalmazások_ szekcióján, ahol _II. helyezést_ ért el.
-- egy cikknek, mely bemutatásra került a _IEEE 23rd International Symposium on Intelligent Systems and Informatics (SISY 2025)_, a cikk preprint változata elérhető [itt](https://edu.codespring.ro/wp-content/uploads/2025/10/BOB___Copy_.pdf). Ez a preprint változat kizárólag személyes és oktatási célokra került megosztásra. A cikk végleges, IEEE által kiadott változata az alábbi linken érhető el: https://doi.org/10.1109/SISY67000.2025.11205379
+## Final Thoughts
+
+I would like to thank [Codespring](https://www.codespring.ro/) for providing the opportunity and support during my internship, which made this project possible. The experience allowed me to apply my knowledge in a real-world setting and gain valuable skills in software development and AI integration.

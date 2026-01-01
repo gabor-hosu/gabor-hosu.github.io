@@ -1,5 +1,9 @@
 @import "./index.css";
 
+h2 {
+  @apply mt-4 mb-3
+}
+
 .figure {
   @apply 
     flex flex-col justify-center
