@@ -6,6 +6,11 @@
 - ### Data Analysis and Modeling &middot; MSc | [Babeș-Bolyai University](https://www.ubbcluj.ro/hu/facultati/matematica_informatica)
 
   **2025 - Present &middot; Cluj-Napoca, Romania**
+  - Selected **courses**:
+    - `Information Retrieval`
+    - `Swarm Intelligence`
+    - `Robotics`
+    - `Coding Theory`
 
 - ### Math & CS &middot; BSc | [Babeș-Bolyai University](https://www.ubbcluj.ro/hu/facultati/matematica_informatica)
 

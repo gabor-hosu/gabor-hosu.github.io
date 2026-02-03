@@ -63,7 +63,7 @@ In the project, I was responsible for designing and implementing the Retrieval A
 
 ![The architecture of the backend server.](./images/bob-backend-architecture.svg)
 
-![The architecture of the RAG system based on a locally hosted LLM/](./images/bob-rag-architecture.svg)
+![The architecture of the RAG system based on a locally hosted LLM.](./images/bob-rag-architecture.svg)
 
 ## Achievements
 
