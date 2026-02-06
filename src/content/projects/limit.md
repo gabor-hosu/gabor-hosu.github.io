@@ -37,6 +37,8 @@ tags: ["IR", "Python", "PyTorch"]
 
 Some **recommendation systems** — like those that suggest **movies**, **books**, or **products** — compress each item into a **single embedding**. This creates an inherent **capacity limit**: beyond a certain scale, the system cannot reliably distinguish relevant items, leading to measurable retrieval inaccuracies. My project reproduced experiments from a [**DeepMind research paper**](https://arxiv.org/abs/2508.21038v1) to investigate and confirm these limits.
 
+![DeepMind: On the Theoretical Limitations of Embedding-Based Retrieval](./images/limit-deepmind-paper.png)
+
 ## Approach and Challenges
 
 During the project, I **designed and scaled experiments** to run efficiently on **limited hardware** while keeping results reproducible.
