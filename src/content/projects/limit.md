@@ -13,26 +13,6 @@ date:
 tags: ["IR", "Python", "PyTorch"]
 ---
 
-<!--
-- ~~Why should I care?~~
-  - ~~Problem: single-embedding representation in text based recommendation systems could be bounded by not only the natural language, but by the geometry. Why is it true and how can this shown/demonstrated?~~
-- ~~What did this person actually do?~~
-  - ~~Reproduced main experiments of the DeepMind paper~~
-  - ~~Compared my results with the original findings, and they lined up (mostly...)~~
-  - ~~Presented my findings with the paper on a research group seminar~~
-- ~~What sklills does this demonstrate?~~
-  - ~~Research paper reading and understanding~~
-  - ~~Interpreting the key ideas, down-scaling parameters to be reproducable on limited hardware~~
-  - ~~Compared results trying to measure the similarities with different metrics~~
-- ~~Can this person debug and think?~~
-  - ~~One of the formulas contain a type: read the coressponding litteracy, understand what the formula, read the original code and spotted the typo~~
-  - ~~At the LIMIT dataset analyzation the numbers were wrong. The issue wasn't found, so I asked the author, and we figured it out what went wrong.~~
-  - ~~The free embedding expering had wierd results. I somehow understood what was my architecture doing, and realized that I put the wrong place the batch norm.~~
-- Did it actually work?
-  - yes, by getting similar tendencies in the results
-- Is it worh digging deeper?
-  - yes, if there are diagrams and intuitie, high level explanations -->
-
 ## Problem and Motivation
 
 Some **recommendation systems** — like those that suggest **movies**, **books**, or **products** — compress each item into a **single embedding**. This creates an inherent **capacity limit**: beyond a certain scale, the system cannot reliably distinguish relevant items, leading to measurable retrieval inaccuracies. My project reproduced experiments from a [**DeepMind research paper**](https://arxiv.org/abs/2508.21038v1) to investigate and confirm these limits.
