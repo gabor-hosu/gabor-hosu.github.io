@@ -4,6 +4,10 @@ h2 {
   @apply mt-4 mb-3
 }
 
+h3 {
+  @apply my-3
+}
+
 .figure {
   @apply 
     flex flex-col justify-center
@@ -13,8 +17,7 @@ h2 {
 .figure > img {
   @apply 
     object-contain
-    /* max-w-150 */
-    max-h-200
+    max-h-100
     my-0 mx-auto
     bg-white;
   max-width: min(calc(var(--spacing) * 150), 80vw);

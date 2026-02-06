@@ -44,6 +44,13 @@ p {
         text-justify
 }
 
+summary {
+    @apply 
+        text-[12pt] sm:text-[14pt]
+        py-3
+        italic
+}
+
 p a:hover {
     @apply underline
 }
