@@ -19,7 +19,8 @@ export default defineConfig({
 
   redirects: {
     "/": "/about",
-    "/blog": "/blog/page/1",
+    // "/blog": "/blog/page/1", // TODO: uncomment it, when blog posts will be published :P
+    "/blog": "/blog/under-construction", // and then delete this too
     "/projects": "/projects/page/1",
   },
 
