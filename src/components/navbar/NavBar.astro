@@ -16,10 +16,10 @@ const { class: className, selectedPage } = Astro.props;
 ---
 
 <nav
-  class=`text-[13pt] sm:text-[15pt] py-4 flex flex-col justify-between sm:flex-row items-center sm:items-stretch ${className}`
+  class=`text-[13pt] mx-[5%] sm:text-[15pt] py-4 flex flex-col justify-between sm:flex-row items-center sm:items-stretch ${className}`
 >
   <div
-    class="is-in-mobile-menu flex items-center max-sm:mt-5 max-sm:hidden max-sm:flex-col max-sm:gap-5 min-sm:ml-[10%] min-md:justify-stretch"
+    class="is-in-mobile-menu flex items-center max-sm:mt-5 max-sm:hidden max-sm:flex-col max-sm:gap-5 min-md:justify-stretch"
   >
     <NavElement
       name="About"
@@ -40,20 +40,12 @@ const { class: className, selectedPage } = Astro.props;
       class="mx-6.5"
     />
   </div>
-  <!-- <div class="mx-5 flex items-center justify-center min-md:w-[60%]"></div> -->
-  <!-- "flex max-sm:order-first max-sm:w-full max-sm:justify-between min-sm:mr-[10%]" -->
-  <div
-    class="flex max-sm:order-first max-sm:w-full max-sm:justify-between min-sm:mr-[10%]"
-  >
-    <button
-      type="button"
-      class="hidden cursor-pointer max-sm:ml-[5%] max-sm:block"
-    >
+  <div class="flex max-sm:order-first max-sm:w-full max-sm:justify-between">
+    <button type="button" class="hidden cursor-pointer max-sm:block">
       <MenuIcon id="open-menu-icon" class="size-8" />
       <CloseIcon id="close-menu-icon" class="hidden size-8" />
     </button>
-    <div class="mr-[5%] flex items-center justify-stretch">
-      <!-- "flex justify-stretch max-sm:mr-[5%]" -->
+    <div class="flex items-center justify-stretch">
       <div class="flex justify-stretch max-sm:mr-[5%]">
         <ContactIcon name="github-logo" url="https://github.com/gabor-hosu" />
         <ContactIcon name="gmail-logo" url="mailto:contact@hgabor.com" />
