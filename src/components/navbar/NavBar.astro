@@ -16,10 +16,10 @@ const { class: className, selectedPage } = Astro.props;
 ---
 
 <nav
-  class=`text-[13pt] sm:text-[15pt] py-4 flex flex-col sm:flex-row items-center sm:items-stretch ${className}`
+  class=`text-[13pt] mx-[5%] sm:text-[15pt] py-4 flex flex-col justify-between sm:flex-row items-center sm:items-stretch ${className}`
 >
   <div
-    class="is-in-mobile-menu flex items-center max-sm:mt-5 max-sm:hidden max-sm:flex-col max-sm:gap-5 min-sm:ml-[10%] min-md:justify-stretch"
+    class="is-in-mobile-menu flex items-center max-sm:mt-5 max-sm:hidden max-sm:flex-col max-sm:gap-5 min-md:justify-stretch"
   >
     <NavElement
       name="About"
@@ -40,28 +40,25 @@ const { class: className, selectedPage } = Astro.props;
       class="mx-6.5"
     />
   </div>
-  <div class="mx-5 flex items-center justify-center min-md:w-[60%]"></div>
   <div class="flex max-sm:order-first max-sm:w-full max-sm:justify-between">
-    <button
-      type="button"
-      class="hidden cursor-pointer max-sm:ml-[5%] max-sm:block"
-    >
+    <button type="button" class="hidden cursor-pointer max-sm:block">
       <MenuIcon id="open-menu-icon" class="size-8" />
       <CloseIcon id="close-menu-icon" class="hidden size-8" />
     </button>
-    <div class="flex justify-stretch max-sm:mr-[5%]">
-      <ContactIcon name="github-logo" url="https://github.com/gabor-hosu" />
-      <ContactIcon name="gmail-logo" url="mailto:contact@hgabor.com" />
+    <div class="flex items-center justify-stretch">
+      <div class="flex justify-stretch max-sm:mr-[5%]">
+        <ContactIcon name="github-logo" url="https://github.com/gabor-hosu" />
+        <ContactIcon name="gmail-logo" url="mailto:contact@hgabor.com" />
+      </div>
+      <a
+        href="/resume/cv_gabor_hosu.pdf"
+        download
+        class="ml-1 flex items-center justify-center rounded-xl bg-green-500 px-2 py-1 font-semibold text-white shadow transition-colors duration-200 hover:bg-green-600 md:ml-10"
+      >
+        Resume
+      </a>
     </div>
   </div>
-  <DropDownMenu
-    class="is-in-mobile-menu max-sm:mt-8 max-sm:hidden min-sm:mr-[10%] min-sm:ml-[6%]"
-    id="language-selector"
-    options={[
-      { varName: "english", name: "English" },
-      { varName: "hungarian", name: "Magyar" },
-    ]}
-  />
 </nav>
 
 <script>
