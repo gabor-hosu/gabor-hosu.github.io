@@ -24,7 +24,7 @@ body {
 
 .katex {
     @apply 
-        text-[12pt] sm:text-[14pt]
+        text-[14pt] sm:text-[16pt]
         overflow-x-auto whitespace-nowrap
         py-1
 }
