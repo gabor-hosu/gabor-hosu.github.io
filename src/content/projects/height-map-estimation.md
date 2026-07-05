@@ -32,148 +32,272 @@ The following sections outline the key details of the project.
 
 ## Problem Formulation
 
-Before any implementation the first thing is to phrase the problem matematically and reduce the problem as much as possible.
+Before implementing any reconstruction algorithm, the problem must first be formulated mathematically.
 
-The surface $S$ is a function which maps 2D points to real values: $S: D \subset \mathbb{R}^2 \to \mathbb{R}$.
+Let $S : D \subset \mathbb{R}^2 \rightarrow \mathbb{R}$ denote the unknown height function, where $D$ is the image domain. Our goal is to reconstruct $S$ given only the surface normal field
 
-Our goal is to find all $(x_0, y_0, S(x_0, y_0))$ points on the surface $S$ knowing only the $\vec{n}(x_0, y_0) \in \mathbb{R}^3$ normal vector for all $(x_0, y_0)$.
+$$
+\vec{n}(x, y) = \bigl(n_1(x, y), n_2(x, y), n_3(x, y)\bigr).
+$$
 
 ![Surface with normal vector at a fixed point.](./images/surface.jpg)
 
-If $\vec{n}(x, y) = (n_1(x, y), n_2(x, y), n_3(x, y))$, then it turns out that finding $S$ is equivalent to solve the following.
+It can be shown that the surface normals satisfy the following first-order system:
 
 $$
-\begin{align*}
-  \begin{cases}
-    \dfrac{\partial S}{\partial x}(x, y) = -\dfrac{n_1(x, y)}{n_3(x, y)},\\
-    \dfrac{\partial S}{\partial y}(x, y) = -\dfrac{n_2(x, y)}{n_3(x, y)}
-  \end{cases}
-\end{align*}
+\begin{cases}
+\dfrac{\partial S}{\partial x}(x, y) = -\dfrac{n_1(x, y)}{n_3(x, y)},\\[0.8em]
+\dfrac{\partial S}{\partial y}(x, y) = -\dfrac{n_2(x, y)}{n_3(x, y)}.
+\end{cases}
 $$
 
-The previous system, in general, is hard to solve numerically. By using mean squared error minimization we can reformulate it in the following reduced form
+In practice, normal fields are affected by noise and discretization, so an exact solution generally does not exist. Instead, the problem is reformulated as a least-squares optimization, leading to the following Poisson equation:
 
 $$
 \begin{align}
-  \begin{cases}
-    \dfrac{\partial^2 S}{\partial x^2} + \dfrac{\partial^2 S}{\partial y^2} = \dfrac{\partial p}{\partial x} + \dfrac{\partial q}{\partial x}, \quad \text{ on } D,\\
-    S(x_\ast, y_\ast) = 0,
-  \end{cases}
-\end{align}
-$$
-
-where $p := -\frac{n_1}{n_3}, \quad q := -\frac{n_2}{n_3}$ and $(x_\ast, y_\ast) \in D$ is a fixed reference point for initial hight (for the reconstructed surface we don't haved fixed reference).
-
-So our goal is to find the unique solution $S$ of the PDE $(1)$.
-
-## Solutions
-
-We can solve $(1)$ in two different ways: approximating $S$ pointwise or uniformly. Pointwise approximations are applicable more generally but they are not as accurate as the uniform approximations.
-
-### Discretization
-
-**Idea:** split the rectangular domain $D$ in small parts by using a lattice, i.e consider the surface only at the pixel locations.
-
-![Discretized surface with its lattice points.](./images/discretized-surface.jpg)
-
-So we can rewrite $(1)$ as a linear system of equations:
-
-$$
-\begin{align}
-  \begin{cases}
-      S_{i + 1, j} + S_{i, j + 1} + S_{i - 1, j} + S_{i, j - 1}
-          - 4S_{i, j}
-      =
-      h^2(\Delta p_{i, j} + \Delta q_{i, j})\\
-      \text{where } i = \overline{0, m - 1}, j = \overline{0, n - 1},\\
-      S(x_\ast, y_\ast) = 0,
-  \end{cases}
+\begin{cases}
+\dfrac{\partial^2 S}{\partial x^2}
++
+\dfrac{\partial^2 S}{\partial y^2}
+=
+\dfrac{\partial p}{\partial x}
++
+\dfrac{\partial q}{\partial y},
+\quad \text{on } D,\\[0.8em]
+S(x_\ast, y_\ast)=0,
+\end{cases}
 \end{align}
 $$
 
 where
 
-- $(x_{i, j}, y_{i, j})$ lattice points, $p_{i, j} := p(x_{i, j}, y_{i, j}),\ q_{i, j} := q(x_{i, j}, y_{i, j}),\ S_{i, j} := S(x_{i, j}, y_{i, j})$, $i = \overline{0, m - 1}, j = \overline{0, n - 1}$;
-- $\Delta p_{i, j}, \Delta q_{i, j}$ are the corresponding, proper, finite differences of $p_{i, j}, q_{i, j}$.
+$$
+p := -\frac{n_1}{n_3},
+\qquad
+q := -\frac{n_2}{n_3}.
+$$
 
-The system $(2)$ can be solved directly using **Gauss Elimation**. The problem of this approach is that for only a 1K image will require 8TB of memory. We can reduce the memory consumption using sparse matrices, but even then the method won't scale well for larger (4K, 8K) images.
+Because the normal field determines only surface gradients, the reconstructed height is defined only up to an additive constant. Fixing the height at a single reference point guarantees a unique solution.
 
-One way to tackle this problem is to use iterative methods like **Jacobi** and **Gauss-Siedel**. This methods approximate the solution of the system $(2)$ by iterative updates. The update rules can be seprated properly for handling the syncornization during GPU parallelization effortlessly. The Gauss-Seidel method is a bit more complex to implement but reusing the available information will converge two times faster than the Jacobi method.
+## Numerical Methods
+
+After reformulating the problem as a Poisson equation, the remaining task is to solve it numerically. Since an analytical solution is generally unavailable, the equation is first discretized into a linear system.
+
+### Discretization
+
+The continuous domain is sampled on a regular grid, where each grid point corresponds to a pixel in the input normal map.
+
+![Discretized surface with its lattice points.](./images/discretized-surface.jpg)
+
+Using finite difference approximations, the Poisson equation becomes
+
+$$
+\begin{align}
+\begin{cases}
+S_{i + 1, j} + S_{i, j + 1} + S_{i - 1, j} + S_{i, j - 1}
+- 4S_{i, j}
+=
+h^2(\Delta p_{i, j} + \Delta q_{i, j}),\\
+\text{where } i = \overline{0, m - 1}, \quad j = \overline{0, n - 1},\\
+S(x_\ast, y_\ast) = 0.
+\end{cases}
+\end{align}
+$$
+
+where $S_{i,j}$, $p_{i,j}$, and $q_{i,j}$ denote the sampled values at the grid points, and $\Delta p_{i,j}$ and $\Delta q_{i,j}$ are their corresponding finite difference approximations.
+
+A straightforward approach is to solve the resulting linear system using **Gaussian elimination**. However, this quickly becomes impractical: a dense system corresponding to a 1K image would require roughly **8&nbsp;TB of memory**, making direct methods unsuitable for high-resolution images.
+
+Instead, I implemented iterative solvers such as **Jacobi** and **Gauss--Seidel**, which repeatedly refine an initial estimate until convergence. These methods require only local updates, making them well suited for GPU execution. While Gauss--Seidel is slightly more complex to parallelize, it reuses values computed during the current iteration and typically converges in about half the number of iterations required by Jacobi.
 
 <details>
 <summary>Technical details</summary>
 
-- Let $S_{0, 0} = S(x_{0, 0}, y_{0, 0}) = 0 \Rightarrow$ reduce $(2)$ by substituting $S_{0, 0} = 0$ into the equations and leaving out
-  $$
-    \begin{align*}
-      S_{1, 0} + S_{0, 1} + S_{-1, j} + S_{0, -1}
-              - 4S_{0, 0}
-      =
-      h^2(\Delta p_{0, 0} + \Delta q_{0, 0})
-    \end{align*}
-  $$
-- $A =: D - L - U$; $D = \text{diag } A$; $-L, -U$ lower and upper triangular matrices of $A$
-- $N := m\cdot n - 1$, $A =: [a_{i, j}]_{i, j = \overline{0, N}}$
-- Jacobi method's update rule
-  $$
-    \begin{align*}
-      x^{(k + 1)} &= D^{-1}(L + U)x^{(k)} + D^{-1}b\\
-      x_i^{(k + 1)} &= \frac{1}{a_{i,i}}\left(b_i - \sum_{j \neq i} a_{i,j}x_j^{(k)}\right), \quad j = \overline{0, N}
-    \end{align*}
-  $$
-- Gauss-Seidel methods update rule
-  $$
-    \begin{align*}
-        x^{(k + 1)} &= (D - L)^{-1}U x^{(k)} + (D - L)^{-1}b\\
-        x_i^{(k + 1)} &= \frac{1}{a_{i,i}}\left(b_i - \sum_{j = 1}^{i-1} a_{i,j}x_j^{(k + 1)} - \sum_{j = i + 1}^{N} a_{i,j}x_j^{(k)}\right), \quad j = \overline{0, N}
-    \end{align*}
-  $$
-- They conververge only for special type of matrices. It can be shown for $A$ both methods will converge with exponential decay ($A$ is irreducibly diagonally dominant).
-- It can be observed that Gauss-Seidel re-uses already calculated values in the current iteration. It can be implemented parallely without any syncronization overhead using red-black coloring.
+To remove the additive constant, the height at a reference point is fixed:
+
+$$
+S_{0,0} = S(x_{0,0}, y_{0,0}) = 0.
+$$
+
+Substituting this constraint into the linear system removes one unknown, yielding a unique solution.
+
+Let
+
+$$
+Ax=b,
+$$
+
+be the resulting linear system, where $$A=[a_{ij}]$$ is the sparse coefficient matrix, $$x$$ is the vector of unknown heights, and $$b$$ contains the discretized right-hand side computed from the normal field.
+
+The coefficient matrix can be decomposed as
+
+$$
+A = D - L - U,
+$$
+
+where $$D$$ is the diagonal of $$A$$, while $$-L$$ and $$-U$$ are its strictly lower and upper triangular parts.
+
+Using this decomposition, the **Jacobi** iteration is
+
+$$
+\begin{align*}
+x^{(k + 1)}
+&=
+D^{-1}(L + U)x^{(k)} + D^{-1}b,\\
+x_i^{(k + 1)}
+&=
+\frac{1}{a_{ii}}
+\left(
+b_i
+-
+\sum_{j \ne i} a_{ij}x_j^{(k)}
+\right).
+\end{align*}
+$$
+
+The **Gauss--Seidel** iteration is
+
+$$
+\begin{align*}
+x^{(k + 1)}
+&=
+(D - L)^{-1}Ux^{(k)} + (D - L)^{-1}b,\\
+x_i^{(k + 1)}
+&=
+\frac{1}{a_{ii}}
+\left(
+b_i
+-
+\sum_{j=1}^{i-1} a_{ij}x_j^{(k+1)}
+-
+\sum_{j=i+1}^{N} a_{ij}x_j^{(k)}
+\right).
+\end{align*}
+$$
+
+For this discretization, the coefficient matrix satisfies the conditions required for convergence of both methods.
+
+The key difference between the two algorithms is that **Gauss-Seidel** immediately reuses values computed during the current iteration, whereas **Jacobi** uses only values from the previous iteration. Although this introduces data dependencies, they can be eliminated using **red-black ordering**, allowing Gauss-Seidel to be efficiently parallelized on the GPU without additional synchronization.
+
+![Red-black ordering used for parallel Gauss-Seidel updates. All red nodes are updated simultaneously, followed by all black nodes, since each node depends only on neighbors of the opposite color.](./images/red-black-ordering.jpg)
 
 </details>
 
-### Fast Fourier Transform
+### Fast Fourier Transform (FFT)
 
-**Idea:** approximate the function $S(x, y)$ by using more simpler functions which behave nicely against the PDE $(1)$.
+**Idea:** represent the unknown surface as a sum of Fourier basis functions. In the frequency domain, the Poisson equation becomes algebraic, allowing each frequency component to be solved independently.
 
-We can write $S(x, y), \ p(x, y), \ q(x, y)$ as linear combinations of complex exponentials $\exp(j\omega_x x + j\omega_y y) = \exp\{j\omega \cdot (x, y)\}$, where
+The functions $S(x, y)$, $p(x, y)$, and $q(x, y)$ can be expanded as linear combinations of the complex exponentials
 
 $$
-\omega \in \Omega := \left\{(2\pi k, 2\pi l)\ \middle|\ k = \overline{0, m-1}, l = \overline{0, n-1}\right\}.
+e^{j(\omega_x x + \omega_y y)},
 $$
 
-Then we can find the unknown coefficents of the expansion of the function $S(x, y)$ in terms of the known expansions pf $p(x, y)$ and $q(x, y)$.
+where
+
+$$
+\omega \in \Omega :=
+\left\{
+(2\pi k, 2\pi l)
+\;\middle|\;
+k = \overline{0, m-1},
+\;
+l = \overline{0, n-1}
+\right\},
+$$
+
+and $j := \sqrt{-1}$.
+
+Instead of iteratively updating pixel values, the unknown Fourier coefficients of $$S$$ are computed directly from the known coefficients of $p$ and $q$. The reconstructed height map is then obtained by applying the inverse Fast Fourier Transform (IFFT).
+
+Compared to iterative methods, the FFT approach computes the solution in a single pass with a time complexity of $O(N \log N)$, where $N = m \times n$ is the number of pixels. Because the solution is obtained globally rather than through local updates, it also avoids the accumulation of local approximation errors.
 
 <details>
 <summary>Technical details</summary>
 
-- $$
-  S(x, y) = \sum_{\omega \in \Omega} C(\omega) \exp\{j\omega \cdot (x, y)\}, \quad C(\omega) = ?
-  $$
-- $$
-  \implies \frac{\partial^2 S}{\partial x^2} + \frac{\partial^2 S}{\partial y^2} = \sum_{\omega \in \Omega} \textcolor{red}{-C(\omega) (\omega_x^2 + \omega_y^2)} \exp\{j\omega \cdot (x, y)\}
-  $$
-- $$
-  \begin{align*}
-    p(x, y) = \sum_{\omega \in \Omega} C_p(\omega) \exp\{j\omega \cdot (x, y)\}\\
-    q(x, y) = \sum_{\omega \in \Omega} C_q(\omega) \exp\{j\omega \cdot (x, y)\}
-  \end{align*}
-  $$
-- $$
-    \implies
-    \frac{\partial p}{\partial x} + \frac{\partial q}{\partial y}
-    = \sum_{\omega \in \Omega} \textcolor{red}{(C_p(\omega)\omega_x + C_q(\omega)\omega_y)j} \exp\{j\omega \cdot (x, y)\}
-  $$
-- Matching the $\color{red}{\text{coefficients}}$ results the following filter
-  $$
-    \begin{align*}
-      C(\omega) = - \frac{(C_p(\omega)\omega_x + C_q(\omega)\omega_y)j}{\omega_x^2 + \omega_y^2}, \quad \forall\ \omega \in \Omega \setminus \{(0, 0)\}
-    \end{align*}
-  $$
-- The $C_p(\omega), C_q(\omega)$ coefficents can be calculated using FFT and the function $S(x, y)$ from $C(\omega)$ using IFFT algorithms.
-- **Note:** Generally the coefficents of the expansion of $S(x, y)$ cannot be expressed exactly. But using iterative methods can work for a broader class of problems.
-- Also using FFT, when it is applicable, will lead more exact approximation due too the lack of local approximation errors with a single iteration in $O(N \log N)$ time complexity.
+The unknown surface can be expanded as
+
+$$
+S(x, y)
+=
+\sum_{\omega \in \Omega}
+C(\omega)
+e^{j\omega \cdot (x, y)},
+\qquad
+C(\omega) = \, ?
+$$
+
+Applying the Laplacian gives
+
+$$
+\frac{\partial^2 S}{\partial x^2}
++
+\frac{\partial^2 S}{\partial y^2}
+=
+\sum_{\omega \in \Omega}
+\left(
+-C(\omega)(\omega_x^2+\omega_y^2)
+\right)
+e^{j\omega \cdot (x, y)}.
+$$
+
+Similarly,
+
+$$
+\begin{align*}
+p(x, y)
+&=
+\sum_{\omega \in \Omega}
+C_p(\omega)
+e^{j\omega \cdot (x, y)},\\
+q(x, y)
+&=
+\sum_{\omega \in \Omega}
+C_q(\omega)
+e^{j\omega \cdot (x, y)}.
+\end{align*}
+$$
+
+Therefore,
+
+$$
+\frac{\partial p}{\partial x}
++
+\frac{\partial q}{\partial y}
+=
+\sum_{\omega \in \Omega}
+\left(
+C_p(\omega)\omega_x
++
+C_q(\omega)\omega_y
+\right)
+j
+e^{j\omega \cdot (x, y)}.
+$$
+
+Matching the Fourier coefficients yields
+
+$$
+C(\omega)
+=
+-
+\frac{
+\left(
+C_p(\omega)\omega_x
++
+C_q(\omega)\omega_y
+\right)
+j
+}
+{\omega_x^2+\omega_y^2},
+\qquad
+\forall\;
+\omega\in\Omega\setminus\{(0,0)\}.
+$$
+
+The coefficients $C_p(\omega)$ and $C_q(\omega)$ are computed using the FFT. After applying the frequency-domain filter above, the reconstructed surface is obtained by applying the inverse FFT to $C(\omega)$.
+
+**Note:** This formulation assumes periodic boundary conditions. When these assumptions are not satisfied, iterative methods provide a more general approach for solving the reconstruction problem.
 
 </details>
 
@@ -189,4 +313,16 @@ Then we can find the unknown coefficents of the expansion of the function $S(x, 
 - TODO
 - add bibliography too
 
-$\overrightarrow{v}$
+## References
+
+The mathematical background and algorithms presented in this project were independently derived and implemented based on the following references.
+
+1. Somogyi, I., & András, Sz. (2009). _Numerikus Analízis_. Presa Universitară Clujeană.
+
+2. Frankot, R. T., & Chellappa, R. (1988). _A Method for Enforcing Integrability in Shape from Shading Algorithms_. _IEEE Transactions on Pattern Analysis and Machine Intelligence_. [[PDF]](https://webdocs.cs.ualberta.ca/~vis/courses/CompVis/readings/photometric/FrankotIntegrpami88.pdf)
+
+3. Gemignani, L. _Basic Iterative Methods – Lecture Notes_. University of Pisa. [[PDF]](https://pages.di.unipi.it/gemignani/lecture1.pdf)
+
+4. Eding, M. _Sparse Matrices (Interactive Article)._ [[Website]](https://matteding.github.io/2019/04/25/sparse-matrices/)
+
+5. ambientCG. _Free PBR Textures, HDRIs and 3D Models._ [[Website]](https://ambientcg.com/)
