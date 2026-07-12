@@ -21,6 +21,10 @@ Since modern images often contain millions of pixels, reconstructing a height ma
 
 Because these algorithms are highly parallelizable, they are well suited for execution on modern GPUs. To create a portable, cross-platform solution, I implemented the GPU kernels using [**OpenCL**](https://www.khronos.org/opencl/), with **Python** serving as the host language.
 
+![Original 1K image from a pizza.](./images/height-pizza-1k.jpg)
+
+![The 1K pizza image during the Jacobi approximation.](./images/height-pizza-1k-jacobi.gif)
+
 ### Links
 
 - The source code is available in this GitHub repository (...).
@@ -190,7 +194,7 @@ The key difference between the two algorithms is that **Gauss-Seidel** immediate
 The functions $S(x, y)$, $p(x, y)$, and $q(x, y)$ can be expanded as linear combinations of the complex exponentials
 
 $$
-e^{j(\omega_x x + \omega_y y)},
+e^{j\omega \cdot (x, y)} := e^{j(\omega_x x + \omega_y y)},
 $$
 
 where
@@ -303,15 +307,42 @@ The coefficients $C_p(\omega)$ and $C_q(\omega)$ are computed using the FFT. Aft
 
 ## Performance Evaluation
 
-- concrete results -- images
-- speed
-- memory
-- accuracy
+[Convergence](#convergence)
+
+[Numerical methods](#numerical-methods)
+
+- experimental setup
+- TODO: add concrete image results or gifs somewhere
+
+### Scalability
+
+- CPU
+
+![Image size v.s. runtime](./images/size-vs-time-cpu.jpg)
+
+- GPU
+
+![Image size v.s. runtime](./images/size-vs-time-gpu.jpg)
+
+### Memory Usage
+
+![Image size v.s. memory usage](./images/size-vs-memory.jpg)
+
+### Convergence
+
+![RMSE v.s. num of iterations](./images/rmse-vs-iter.jpg)
+
+![Std error v.s. num of iterations](./images/std-error-vs-iter.jpg)`
+
+![Mean error v.s. num of iterations](./images/mean-error-vs-iter.jpg)
+
+![Max error v.s. num of iterations](./images/max-error-vs-iter.jpg)
 
 ## Conclusion
 
-- TODO
-- add bibliography too
+- FFT solvers deliver the best performance-accuracy tradeoff when applicable
+- Iterative methods handle more general problems, trading some accuracy for lower memory usage
+- Parallel computing is crucial for making iterative methods practical at scale
 
 ## References
 
