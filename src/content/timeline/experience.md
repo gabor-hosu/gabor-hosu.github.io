@@ -3,7 +3,11 @@
 
 ## Experience
 
-- ### Software Engineering Internship | [Codespring](https://www.codespring.ro/mentoring-at-codespring)
+- ### Junior Data Scientist | [Qwertee Technology](https://www.qwertee.io/)
+
+  **2026-08 - Present &middot; Remote**
+
+- ### Software Engineering Intern | [Codespring](https://www.codespring.ro/mentoring-at-codespring)
 
   **2024-07 - 2024-09 &middot; Cluj-Napoca, Romania**
   - Built the backend of a **RAG-based chatbot** under senior mentorship
@@ -20,9 +24,6 @@
     - `Docker`
     - `Azure`
     - `GitLab CI/CD`
-  - **Familiarity (pre-development):**
-    - `Javascript`
-    - `React`
 
 - ### Fullstack mentorprogram | [Codespring](https://www.codespring.ro/mentoring-at-codespring)
 
