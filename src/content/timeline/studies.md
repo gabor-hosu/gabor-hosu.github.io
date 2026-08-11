@@ -7,10 +7,11 @@
 
   **2025 - Present &middot; Cluj-Napoca, Romania**
   - Selected **courses**:
+    - `Machine Learning`
+    - `NLP`
     - `Information Retrieval`
     - `Swarm Intelligence`
-    - `Robotics`
-    - `Coding Theory`
+    - `GPU programming`
 
 - ### Math & CS &middot; BSc | [Babeș-Bolyai University](https://www.ubbcluj.ro/hu/facultati/matematica_informatica)
 
